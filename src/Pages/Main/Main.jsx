@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "Pages/Main/Main.scss";
 
 export default class Main extends Component {
   render() {
@@ -7,7 +8,9 @@ export default class Main extends Component {
         <section className="section-one">
           <div className="content-box-one">
             <div className="main-title">
-              <div className="main-animation">"사람들뭐라고"</div>
+              <div className="main-animation">
+                "사람들뭐라고 <br /> 나한테허머라고"
+              </div>
               <div className="main-sub-title">
                 " 나의 24시간 마음전문가 트로스트 "
               </div>
@@ -20,7 +23,7 @@ export default class Main extends Component {
               <p className="center-text">
                 지금까지 트로스트에서 위안을 얻은 분들은
                 <br />
-                <span className="count-animation"></span>명 입니다
+                <span className="count-animation">144,141</span>명 입니다
               </p>
             </div>
           </div>
@@ -32,11 +35,11 @@ export default class Main extends Component {
               <li>
                 <button className="trost-day-one">
                   AM 1:00
-                  <p>바로상담 신청</p>
+                  <span>바로상담 신청</span>
                 </button>
               </li>
               <li>
-                <button className="trost-day-one">
+                <button className="trost-day-two">
                   AM 8:30
                   <p>
                     출근길 <span>감정기록</span>
@@ -44,7 +47,7 @@ export default class Main extends Component {
                 </button>
               </li>
               <li>
-                <button className="trost-day-one">
+                <button className="trost-day-three">
                   PM 12:00
                   <p>
                     점심시간 <span>미션 수행</span>
@@ -52,7 +55,7 @@ export default class Main extends Component {
                 </button>
               </li>
               <li>
-                <button className="trost-day-one">
+                <button className="trost-day-four">
                   PM 6:00
                   <p>
                     퇴근길 <br />
@@ -61,7 +64,7 @@ export default class Main extends Component {
                 </button>
               </li>
               <li>
-                <button className="trost-day-one">
+                <button className="trost-day-five">
                   PM 10:00
                   <p>
                     <span>예약 상담</span> 진행
@@ -79,17 +82,17 @@ export default class Main extends Component {
             <h2 className="content-title">감정데이터에 기반한 전문 심리상담</h2>
             <div className="partner-intro-box">
               <ul className="partner-intro-list">
-                <li className="partner-intro-item">
+                <li className="partner-intro-item-one">
                   상담, 심리, 임상 전공 석사 졸업 이상의 학력!
                 </li>
-                <li className="partner-intro-item">
+                <li className="partner-intro-item-two">
                   공인된 상담학회의 자격증 보유
-                  <ul className="partner-intro-sub-list">
+                  <ul>
                     <li>- 한국상담심리학회 상담심리사 2급 이상</li>
                     <li>- 한국상담학회 전문상담사 2급 이상</li>
                   </ul>
                 </li>
-                <li className="partner-intro-item">
+                <li className="partner-intro-item-three">
                   상담진행 횟수, 후기로 검증된 상담사
                 </li>
               </ul>
@@ -100,9 +103,15 @@ export default class Main extends Component {
         <section className="section-four">
           <div className="content-box-four">
             <ul className="service-tab">
-              <li className="text-service">텍스트테라피</li>
-              <li className="call-service">전화상담</li>
-              <li className="pc-version">PC버전</li>
+              <li className="text-service">
+                <span>텍스트테라피</span>
+              </li>
+              <li className="call-service">
+                <span>전화상담</span>
+              </li>
+              <li className="pc-version">
+                <span>PC버전</span>
+              </li>
             </ul>
             <div className="service-contents">
               <div className="text-service-contents">
@@ -116,6 +125,13 @@ export default class Main extends Component {
                       <li className="slide-img"></li>
                     </ul>
                   </div>
+                  <div className="slide-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
                 </div>
                 <h3>텍스트 테라피</h3>
                 <p>
@@ -126,8 +142,12 @@ export default class Main extends Component {
                   원하는 시간에 편리하게 상담을 받을 수 있습니다.
                 </p>
                 <div className="service-link-tab">
-                  <button className="service-info">상담권 정보</button>
-                  <a href="#">이용 안내</a>
+                  <button className="service-info">
+                    상담권 정보<span className="btn-arrow">></span>
+                  </button>
+                  <a href="#">
+                    이용 안내<span className="btn-arrow">></span>
+                  </a>
                 </div>
               </div>
               <div className="call-service-contents">
@@ -143,7 +163,9 @@ export default class Main extends Component {
                   원하는 시간에 편리하게 상담을 받을 수 있습니다.
                 </p>
                 <div className="service-link-tab">
-                  <button className="service-info">상담권 정보</button>
+                  <button className="service-info">
+                    상담권 정보<span className="btn-arrow">></span>
+                  </button>
                   <a href="#">이용 안내</a>
                 </div>
               </div>
@@ -163,7 +185,7 @@ export default class Main extends Component {
           <div className="content-box-five">
             <h2 className="content-title">심리상담 후기</h2>
             <ul className="review-list">
-              <li className="review-header">
+              <li className="review-item">
                 <strong className="review-program">
                   대면상담 4주 프로그램
                 </strong>
@@ -180,9 +202,33 @@ export default class Main extends Component {
                   일들을 지금은 이렇게 아무렇지 않게 지나보내고 있네요 ㅎㅎ
                   대면상담 끝나면 텍스트나 전화로 계속 이어나가려구요.
                 </div>
-                <div className="review-user-name">4922...님</div>
+                <div className="review-user-name">
+                  <span>4922...</span>님
+                </div>
               </li>
             </ul>
+            <div className="slide-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
             <div className="slide-left"></div>
             <div className="slide-right"></div>
           </div>
@@ -197,7 +243,7 @@ export default class Main extends Component {
               연구합니다.
             </p>
             <div className="technical-research-list">
-              <div className="technical-research-item">
+              <div className="technical-research-item-one">
                 <div className="technical-research-head">
                   01.
                   <br />
@@ -205,10 +251,10 @@ export default class Main extends Component {
                 </div>
                 <div className="technical-research-img"></div>
                 <div className="technical-research-text">
-                  트로스트의 머신러닝 기술은 당신의 이야기 속에서 중요한{" "}
+                  트로스트의 머신러닝 기술은 당신의 이야기 속에서 중요한
                   <span>비언어적 단서</span>를 찾아냅니다.
                   <br />
-                  상담학적으로 의미있는 사실, 경험, 변화의 실마리가 되는 순간 등{" "}
+                  상담학적으로 의미있는 사실, 경험, 변화의 실마리가 되는 순간 등
                   <span>5개 주요반응</span>을 통해 심리치료 효과를 높입니다.
                 </div>
                 <div className="technical-research-notice">
@@ -216,19 +262,21 @@ export default class Main extends Component {
                   NAACL에서 발표, 논문 게재 승인되며 기술력을 인정받았습니다.
                 </div>
               </div>
-              <div className="technical-research-item">
+              <div className="technical-research-item-two">
                 <div className="technical-research-head">
-                  01.
+                  02.
                   <br />
-                  머신러닝으로 의미있는 정보찾기
+                  나도 몰랐던 내 마음을 알려주는 감정분석 솔루션
                 </div>
                 <div className="technical-research-img"></div>
                 <div className="technical-research-text">
-                  트로스트의 머신러닝 기술은 당신의 이야기 속에서 중요한{" "}
-                  <span>비언어적 단서</span>를 찾아냅니다.
+                  트로스트의 감정분석 솔루션은 특정 상황에서 느꼈던 사람의
+                  <span> 감정을 8개로 세분화</span>하고 16개의 축으로
+                  구분합니다.
                   <br />
-                  상담학적으로 의미있는 사실, 경험, 변화의 실마리가 되는 순간 등{" "}
-                  <span>5개 주요반응</span>을 통해 심리치료 효과를 높입니다.
+                  당신이 그 상황에 대해 어떻게 느꼈는지 차마 모르고
+                  <span> 지나친 감정을 포착</span>하여 심리치료에 중요한 핵심이
+                  됩니다.
                 </div>
                 <div className="technical-research-notice">
                   ※ 본 연구는 2019년 자연어처리 분야 최고 수준의 국제학술대회
@@ -259,30 +307,32 @@ export default class Main extends Component {
               </div>
             </div>
             <div className="eap-contents">
-              <div className="eap-content">
-                <div className="eap-content-img"></div>
+              <div className="eap-content-one">
                 <div className="eap-content-text">
                   <div className="eap-content-title">철저한 익명성 보장</div>
                   <div className="eap-content-sub-title">
-                    대면상담의 부담을 벗어나 훨씬 더 편하고 자유로운 이용
+                    - 대면상담의 부담을 벗어나 훨씬 더 편하고 자유로운 이용
                   </div>
                 </div>
               </div>
-              <div className="eap-content">
-                <div className="eap-content-img"></div>
+              <div className="eap-content-two">
                 <div className="eap-content-text">
-                  <div className="eap-content-title">철저한 익명성 보장</div>
+                  <div className="eap-content-title">
+                    초기 투자 및 운영비용 부담 감소
+                  </div>
                   <div className="eap-content-sub-title">
-                    대면상담의 부담을 벗어나 훨씬 더 편하고 자유로운 이용
+                    - 기존 사내 상담실, 오프라인 센터에 비해 낮아진 가격 부담
+                    <br />- 전체 구성원의 사전진단부터 사후관리까지 폭 넓은
+                    심리케어 가능
                   </div>
                 </div>
               </div>
-              <div className="eap-content">
-                <div className="eap-content-img"></div>
+              <div className="eap-content-three">
                 <div className="eap-content-text">
-                  <div className="eap-content-title">철저한 익명성 보장</div>
+                  <div className="eap-content-title">접근성의 한계 해결</div>
                   <div className="eap-content-sub-title">
-                    대면상담의 부담을 벗어나 훨씬 더 편하고 자유로운 이용
+                    - 장소, 시간의 제약 등이 적어 지속적으로 상담이 불가능한
+                    해외, 지방근무자들의 이용도 가능
                   </div>
                 </div>
               </div>
@@ -296,7 +346,7 @@ export default class Main extends Component {
         </section>
         <section className="section-eight">
           <div className="content-box-eight">
-            <h3 className="eap-companies-title"></h3>
+            <h3 className="eap-companies-title">EAP 프로그램 이용 기업</h3>
             <div className="eap-companies">
               <div className="eap-company"></div>
               <div className="eap-company"></div>
