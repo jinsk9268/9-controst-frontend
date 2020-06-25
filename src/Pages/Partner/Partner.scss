@@ -1,4 +1,3 @@
-// 페이지 css
 .Partner {
   width: 960px;
   margin: 0 auto;
@@ -321,9 +320,7 @@
           .type-checkbox-3 {
             cursor: pointer;
             margin-right: 22px;
-            // display: inline-block;
-            // vertical-align: middle;
-            display: inline-flex;
+            display: flex;
             justify-content: center;
             align-items: center;
 
