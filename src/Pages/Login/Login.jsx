@@ -22,7 +22,7 @@ render() {
            
 
                 <div className="login-email">
-                    <a className="login-email-a" href="#">이메일로 로그인</a>
+                  <Link to="#" className="login-email-a">이메일로 로그인</Link>
                 </div>
                 </div>
                 <div className="login-info">트로스트 계정이 없으신가요?
