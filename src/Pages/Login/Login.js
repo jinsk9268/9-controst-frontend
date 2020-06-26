@@ -25,7 +25,6 @@ export class Login extends React.Component {
                 <button type="button" className="login-btn-apple">
                   애플 로그인
                 </button>
-
                 <div className="login-email">
                   <Link to="#" className="login-email-a">
                     이메일로 로그인
