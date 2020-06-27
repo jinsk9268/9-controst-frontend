@@ -16,7 +16,6 @@ class PartnerSearch extends Component {
   };
 
   render() {
-    //console.log("handleChangeInput>>>", this.state);
     return (
       <div className="partner-filter-search">
         <button className="btn-partner-filter-search" type="button">
@@ -58,6 +57,7 @@ class MyCounselingType extends Component {
               name="check-counseling-type"
               value="typeText"
               id="checkbox-text"
+              defaultChecked
             />
             <label className="type-checkbox-1" for="checkbox-text">
               텍스트테라피
@@ -69,6 +69,7 @@ class MyCounselingType extends Component {
               name="check-counseling-type"
               value="typeText"
               id="checkbox-call"
+              defaultChecked
             />
             <label className="type-checkbox-1" for="checkbox-call">
               전화상담
@@ -80,6 +81,7 @@ class MyCounselingType extends Component {
               name="check-counseling-type"
               value="typeText"
               id="checkbox-meet"
+              defaultChecked
             />
             <label className="type-checkbox-1" for="checkbox-meet">
               대면상담
@@ -135,6 +137,7 @@ class MyCounselingCondition extends Component {
               name="check-counseling-type"
               value="typeText"
               id="checkbox-master"
+              defaultChecked
             />
             <label className="type-checkbox-2" for="checkbox-master">
               마스터 상담사
@@ -146,6 +149,7 @@ class MyCounselingCondition extends Component {
               name="check-counseling-type"
               value="typeText"
               id="checkbox-sub"
+              defaultChecked
             />
             <label className="type-checkbox-2" for="checkbox-sub">
               전문 상담사
@@ -157,6 +161,7 @@ class MyCounselingCondition extends Component {
               name="check-counseling-type"
               value="typeText"
               id="checkbox-nomal"
+              defaultChecked
             />
             <label className="type-checkbox-2" for="checkbox-nomal">
               일반 상담사
@@ -172,6 +177,7 @@ class MyCounselingCondition extends Component {
                 name="check-counseling-gender-type"
                 value="type-radio"
                 id="radio-gender-all"
+                defaultChecked
               />
               <label className="type-checkbox-3" for="radio-gender-all">
                 무관
@@ -210,6 +216,7 @@ class MyCounselingCondition extends Component {
                 name="check-counseling-day-type"
                 value="type-radio"
                 id="radio-day-all"
+                defaultChecked
               />
               <label className="type-checkbox-3" for="radio-day-all">
                 무관
@@ -248,6 +255,7 @@ class MyCounselingCondition extends Component {
                 name="check-counseling-certi-type"
                 value="type-radio"
                 id="radio-certi-all"
+                defaultChecked
               />
               <label className="type-checkbox-3" for="radio-certi-all">
                 무관
@@ -286,6 +294,7 @@ class MyCounselingCondition extends Component {
                 name="check-counseling-review-type"
                 value="type-radio"
                 id="radio-review-all"
+                defaultChecked
               />
               <label className="type-checkbox-3 review" for="radio-review-all">
                 무관
@@ -324,6 +333,7 @@ class MyCounselingCondition extends Component {
                 name="check-counseling-specific-type"
                 value="type-radio"
                 id="radio-specific-all"
+                defaultChecked
               />
               <label
                 className="type-checkbox-3 specific-first"
@@ -412,7 +422,7 @@ class MyCounselingCondition extends Component {
 export default class PartnerAside extends Component {
   render() {
     return (
-      <aside className="partner-filter">
+      <aside className="partner-filter-aside">
         <article className="partner-filter-box">
           <PartnerSearch />
         </article>

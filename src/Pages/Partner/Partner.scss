@@ -2,6 +2,7 @@
   width: 960px;
   margin: 0 auto;
   padding: 32px 0px 20px;
+  color: var(--black);
 
   :focus {
     outline: none;
@@ -20,8 +21,6 @@
     padding: 0;
     margin: 0;
   }
-
-  color: var(--black);
 
   .partner-nav {
     height: 20px;
@@ -53,9 +52,11 @@
   .partner-main {
     display: flex;
 
-    .partner-filter {
+    .partner-filter-aside {
       padding: 8px;
       background-color: #f2f2f2;
+      //map 시 오류
+      height: 1157px;
 
       .partner-filter-box {
         width: 280px;
@@ -401,7 +402,7 @@
           }
 
           .partner-list-option-list {
-            display: none;
+            //display: none;
             width: 100%;
             position: absolute;
             top: 32px;
@@ -409,6 +410,10 @@
             border-left: 1px solid #e0e0e0;
             border-bottom: 1px solid #e0e0e0;
             border-right: 1px solid #e0e0e0;
+
+            &.not-show {
+              display: none;
+            }
 
             .partner-list-option-list-element {
               color: var(--lightBlack);
@@ -437,23 +442,25 @@
           position: relative;
 
           // 추천일때
-          &::before {
-            content: "추천";
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            display: block;
-            width: 32px;
-            height: 32px;
-            border-top-left-radius: 50%;
-            border-top-right-radius: 50%;
-            border-bottom-left-radius: 50%;
-            background-color: var(--themeColor);
-            font-size: 13px;
-            font-weight: bold;
-            text-align: center;
-            line-height: 32px;
-            color: #fff;
+          &.marter-recommend {
+            &::before {
+              content: "추천";
+              position: absolute;
+              top: 16px;
+              left: 16px;
+              display: block;
+              width: 32px;
+              height: 32px;
+              border-top-left-radius: 50%;
+              border-top-right-radius: 50%;
+              border-bottom-left-radius: 50%;
+              background-color: var(--themeColor);
+              font-size: 13px;
+              font-weight: bold;
+              text-align: center;
+              line-height: 32px;
+              color: #fff;
+            }
           }
 
           .btn-partner-wish {
@@ -467,6 +474,12 @@
               no-repeat center 24px;
             background-size: 28px auto;
             text-indent: -9999px;
+
+            &.add-wish {
+              background: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/btn_heart32_.png")
+                no-repeat center 24px;
+              background-size: 32px auto;
+            }
           }
 
           .partner-info {
@@ -501,13 +514,25 @@
 
                 .partner-info-position {
                   margin-right: 5px;
-                  color: var(--mainPt);
+
+                  &.main {
+                    color: var(--mainPt);
+                  }
+
+                  &.sub {
+                    color: var(--subPt);
+                  }
+
+                  &.nomal {
+                    color: var(--normalPt);
+                  }
                 }
 
-                .partner-info-new {
-                  margin-right: 5px;
-                  color: var(--newPt);
-                }
+                // 신규 상담사 사용x
+                // .partner-info-new {
+                //   margin-right: 5px;
+                //   color: var(--newPt);
+                // }
               }
 
               .partner-info-headline {
@@ -523,7 +548,7 @@
                 display: flex;
 
                 .partner-info-point {
-                  li {
+                  .star-point {
                     display: inline-block;
                     width: 20px;
                     height: 20px;
@@ -532,6 +557,14 @@
                       no-repeat;
                     background-size: auto 20px;
                     background-position: 0 0;
+
+                    &.half {
+                      background-position: -40px 0;
+                    }
+
+                    &.full {
+                      background-position: -20px 0;
+                    }
 
                     &:last-of-type {
                       margin-right: 0px;
