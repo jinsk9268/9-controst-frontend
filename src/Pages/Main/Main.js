@@ -8,6 +8,7 @@ import Sectionfive from "./SectionFive/Sectionfive";
 import Sectionsix from "./SectionSix/Sectionsix";
 import Sectionseven from "./Sectionseven";
 import Sectioneight from "./Sectioneight";
+import TopBtn from "Component/TopBtn";
 
 export default class Main extends Component {
   constructor() {
@@ -110,6 +111,7 @@ export default class Main extends Component {
         <Sectionsix/>
         <Sectionseven/>
         <Sectioneight/>
+        <TopBtn/>
       </div>
     );
   }
