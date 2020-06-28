@@ -4,6 +4,18 @@
   padding: 32px 0 20px;
   color: var(--black);
 
+  :focus {
+    outline: none;
+  }
+
+  button {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: none;
+    cursor: pointer;
+  }
+
   .partner-profile-nav {
     height: 20px;
     margin-bottom: 16px;
@@ -31,14 +43,427 @@
     }
   }
 
+  @mixin btn-guide($bg-position) {
+    width: 20px;
+    height: 20px;
+    margin: 1.9px 0 0 2px;
+    text-indent: -9999px;
+    vertical-align: middle;
+    background: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/btn_question.png")
+      no-repeat center;
+    background-size: auto 20px;
+    background-position: $bg-position;
+  }
+
+  @mixin price-list() {
+    margin-top: 8px;
+    font-size: 14px;
+
+    li {
+      margin-top: 4px;
+      width: 100%;
+      height: 48px;
+      border: 1px solid #e0e0e0;
+      cursor: pointer;
+      padding: 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      em {
+        font-weight: bold;
+      }
+    }
+  }
+
   .partner-profile-main {
     display: flex;
 
     .partner-profile-section {
       margin-right: 40px;
+
+      .partner-profile-card-wrap {
+        margin-bottom: 40px;
+
+        .partner-profile-card {
+          width: 616px;
+          border: 1px solid #e0e0e0;
+          position: relative;
+
+          .btn-partner-profile-wish {
+            z-index: 1;
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            right: -2px;
+            top: -8px;
+            background: url(https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/btn_heart32.png)
+              no-repeat center 24px;
+            background-size: 28px auto;
+            text-indent: -9999px;
+
+            // 찜하기 기능 추가
+            &.add-wish {
+              background: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/btn_heart32_.png")
+                no-repeat center 24px;
+              background-size: 32px auto;
+            }
+          }
+
+          .partner-profile-wrap-info {
+            width: 100%;
+            height: 153px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+
+            .partner-wrap-img {
+              padding: 16px 0px 0px 24px;
+
+              img {
+                width: 112px;
+                height: 112px;
+              }
+            }
+
+            .partner-wrap-text {
+              padding: 24px 0px 0px 24px;
+
+              .partner-text-info {
+                display: flex;
+                font-size: 20px;
+                font-weight: bold;
+                line-height: 28px;
+
+                h3 {
+                  margin-right: 5.5px;
+                }
+
+                .partner-profile-position {
+                }
+              }
+
+              .partner-reputation {
+                display: flex;
+                margin-top: 8px;
+                font-size: 14px;
+                color: var(--lightBlack);
+
+                .partner-point-star {
+                  display: flex;
+
+                  // 추후 클래스 이름 변경
+                  li {
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 2px;
+                    background: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/review_ico_star_small.png")
+                      no-repeat;
+                    background-size: auto 20px;
+                    background-position: 0 0;
+
+                    //반점
+                    &.half {
+                      background-position: -40px 0;
+                    }
+
+                    //꽉
+                    &.full {
+                      background-position: -20px 0;
+                    }
+
+                    &:last-of-type {
+                      margin-right: 0px;
+                    }
+                  }
+                }
+
+                .partner-profile-point-num {
+                  display: flex;
+                  align-items: center;
+                  margin-left: 7px;
+                }
+              }
+
+              .partner-session-text {
+                margin-top: 16px;
+                font-size: 14px;
+                color: var(--themeColor);
+
+                em {
+                  font-weight: bold;
+                }
+              }
+            }
+          }
+
+          .partner-profile-wrap-counsel-type {
+            height: 54px;
+            display: flex;
+            justify-content: center;
+
+            .partner-counsel-type {
+              display: flex;
+              align-items: center;
+
+              .partner-counsel-type-img {
+                width: 24px;
+                height: 24px;
+                margin-right: 8px;
+              }
+
+              .partner-counsel-type-text {
+                font-size: 16px;
+                line-height: 1.5;
+                margin-right: 20px;
+
+                &.last {
+                  margin-right: 0;
+                }
+              }
+            }
+          }
+        }
+      }
     }
 
     .partner-profile-aside {
+      .partner-program-notice {
+        width: 304px;
+        //height: 209px;
+        border: 1px solid #e0e0e0;
+        padding: 16px;
+        color: var(--lightBlack);
+        font-size: 14px;
+
+        .notice-contents {
+          h4 {
+            font-weight: bold;
+            height: 20px;
+            margin-bottom: 6px;
+
+            &::before {
+              content: "";
+              display: inline-block;
+              width: 20px;
+              height: 20px;
+              margin: -2px 4px 0 0;
+              vertical-align: middle;
+              background: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/ic_noti.png")
+                no-repeat center;
+              background-size: 20px auto;
+            }
+          }
+
+          p {
+            height: 77px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e0e0e0;
+            line-height: 1.43;
+          }
+        }
+
+        .btn-apply {
+          height: 56px;
+          width: 100%;
+          margin-top: 16px;
+          background: var(--themeColor);
+          border-radius: 5px;
+          font-size: 20px;
+          font-weight: bold;
+          color: #fff;
+        }
+      }
+
+      .partner-program-texttera {
+        margin-top: 24px;
+
+        .texttera-img {
+          position: relative;
+          width: 100%;
+          height: 188px;
+          padding: 32px 16px 16px 16px;
+          background: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/img_tt.png")
+            no-repeat center;
+          background-size: cover;
+          color: #fff;
+
+          .texttera-header {
+            display: flex;
+            align-items: center;
+
+            h3 {
+              font-size: 24px;
+              font-weight: 500;
+              line-height: 1.1;
+            }
+
+            button {
+              @include btn-guide(-48px center);
+            }
+          }
+
+          .texttera-content {
+            margin-top: 1px;
+            font-size: 14px;
+            line-height: 1.43;
+          }
+
+          .texttera-link {
+            position: absolute;
+            bottom: 16px;
+            font-size: 12px;
+            line-height: 1.67;
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+
+        .price-list {
+          @include price-list();
+        }
+      }
+
+      .partner-program-phone {
+        margin-top: 24px;
+
+        .phone-img {
+          position: relative;
+          display: flex;
+          width: 100%;
+          height: 188px;
+          padding: 32px 16px 16px 16px;
+          background: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/img_vt.png")
+            no-repeat center;
+          background-size: cover;
+
+          .phone-head-content-wrap {
+            position: relative;
+
+            .phone-header {
+              display: flex;
+              align-items: center;
+
+              h3 {
+                font-size: 24px;
+                line-height: 1.1;
+                font-weight: 500;
+              }
+
+              button {
+                @include btn-guide(0 center);
+              }
+            }
+
+            .phone-content {
+              font-size: 14px;
+              margin-top: 5px;
+              display: flex;
+            }
+
+            .phone-link {
+              font-size: 12px;
+              margin-top: 6px;
+              line-height: 1.67;
+              text-decoration: underline;
+              cursor: pointer;
+            }
+
+            .btn-app-install {
+              position: absolute;
+              bottom: 0;
+              width: 160px;
+              height: 40px;
+              background: #fff;
+              border-radius: 5px;
+              font-size: 16px;
+              font-weight: bold;
+              color: var(--themeColor);
+            }
+          }
+
+          .app-install-list {
+            position: relative;
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            cursor: pointer;
+
+            .play-store {
+              margin-top: 5px;
+              width: 83px;
+              height: 28px;
+              background: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/btn_store.png")
+                no-repeat;
+              background-size: auto 28px;
+              background-position: 0 0;
+              border-radius: 4px;
+            }
+
+            .app-store {
+              margin-top: 5px;
+              width: 84px;
+              height: 28px;
+              background: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/btn_store.png")
+                no-repeat;
+              background-size: auto 28px;
+              background-position: -88px 0;
+              border-radius: 4px;
+            }
+          }
+        }
+
+        .price-list {
+          @include price-list();
+        }
+      }
+
+      .partner-program-meet {
+        margin-top: 24px;
+
+        .meet-img {
+          width: 100%;
+          height: 188px;
+          padding: 32px 16px 16px 16px;
+          background: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/img_offline_therapy.png")
+            no-repeat center;
+          background-size: cover;
+          color: #fff;
+
+          .meet-header {
+            display: flex;
+            align-items: center;
+
+            h3 {
+              font-size: 24px;
+              line-height: 1.1;
+              font-weight: 500;
+            }
+
+            button {
+              @include btn-guide(-48px center);
+            }
+          }
+
+          .meet-content {
+            display: flex;
+            font-size: 16px;
+            margin-top: 5px;
+          }
+
+          .meet-link {
+            font-size: 12px;
+            margin-top: 6px;
+            line-height: 1.67;
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+
+        .price-list {
+          @include price-list();
+        }
+      }
     }
   }
 }
