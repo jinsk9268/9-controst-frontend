@@ -1,0 +1,81 @@
+{
+  "information": [
+    {
+      "name": "박철우",
+      "gender": "남자",
+      "level": "마스터 상담사",
+      "stars": 4.5,
+      "review_count": 33,
+      "counsel_count": 1306,
+      "introduction": "갈등상황이나 힘들 때 나누어주세요",
+      "is_cousel_count_gt_150": true,
+      "profile_image_url": "https://d2qrvi4l1nprmf.cloudfront.net/images/partner/15065783075827_.png"
+    },
+    {
+      "name": "김효린",
+      "gender": "여자",
+      "level": "전문 상담사",
+      "stars": 3.1,
+      "review_count": 67,
+      "counsel_count": 1080,
+      "introduction": "완벽하지 않아서 더 사랑스러운거에요",
+      "is_cousel_count_gt_150": true,
+      "profile_image_url": "https://d2qrvi4l1nprmf.cloudfront.net/images/partner/15065782615741_.png"
+    },
+    {
+      "name": "변명숙",
+      "gender": "여자",
+      "level": "일반 상담사",
+      "stars": 5,
+      "review_count": 50,
+      "counsel_count": 424,
+      "introduction": "당신은 그 누구보다 잘 할 수 있어요",
+      "is_cousel_count_gt_150": true,
+      "profile_image_url": "https://d2qrvi4l1nprmf.cloudfront.net/images/partner/15065783925952_.png"
+    },
+    {
+      "name": "권효석",
+      "gender": "남자",
+      "level": "마스터 상담사",
+      "stars": 2.2,
+      "review_count": 160,
+      "counsel_count": 1410,
+      "introduction": "함께 나누며 치유와  평화, 안식을",
+      "is_cousel_count_gt_150": true,
+      "profile_image_url": "https://d2qrvi4l1nprmf.cloudfront.net/images/partner/15065782575737_.png"
+    },
+    {
+      "name": "천세경",
+      "gender": "여자",
+      "level": "전문 상담사",
+      "stars": 3.6,
+      "review_count": 141,
+      "counsel_count": 1578,
+      "introduction": "오늘, '나'를 만나러 잘 오셨어요.",
+      "is_cousel_count_gt_150": true,
+      "profile_image_url": "https://d2qrvi4l1nprmf.cloudfront.net/images/partner/15065782115651_.png"
+    },
+    {
+      "name": "김수한",
+      "gender": "여자",
+      "level": "일반 상담사",
+      "stars": 3.9,
+      "review_count": 14,
+      "counsel_count": 1117,
+      "introduction": "당신의 마음자리에 함께 하고싶습니다.",
+      "is_cousel_count_gt_150": true,
+      "profile_image_url": "https://d2qrvi4l1nprmf.cloudfront.net/images/partner/1548650937_.png"
+    },
+    {
+      "name": "임명숙",
+      "gender": "여자",
+      "level": "마스터 상담사",
+      "stars": 4.1,
+      "review_count": 53,
+      "counsel_count": 884,
+      "introduction": "든든한 당신의 편이 되어 드릴게요. ",
+      "is_cousel_count_gt_150": true,
+      "profile_image_url": "https://d2qrvi4l1nprmf.cloudfront.net/images/partner/15065781245524_.png"
+    }
+  ]
+}

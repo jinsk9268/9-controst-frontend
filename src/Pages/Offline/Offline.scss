@@ -24,7 +24,6 @@
           border-bottom: 1px solid #e0e0e0;
           position: relative;
           .center-recommend-img {
-            background-image: url("https://d2qrvi4l1nprmf.cloudfront.net/images/partner/15065783925952_.png");
             background-size: cover;
             width: 80px;
             height: 80px;
@@ -81,12 +80,19 @@
                 ul {
                   display: flex;
                   li {
-                    background-image: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/review_ico_star_small.png");
-                    background-position: -13px 0;
-                    background-size: auto 13px;
                     width: 13px;
                     height: 13px;
                     margin-right: 2px;
+                    background: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/review_ico_star_small.png")
+                      no-repeat;
+                    background-size: auto 13px;
+                    background-position: left;
+                    &.half {
+                      background-position: -26px 0;
+                    }
+                    &.full {
+                      background-position: -13px 0;
+                    }
                   }
                 }
                 span {
