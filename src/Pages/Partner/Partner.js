@@ -9,19 +9,21 @@ export default class Partner extends Component {
     super();
 
     this.state = {
-      partnerData: []
+      partnerData: [],
     };
   }
 
-  componentDidMount () {
-    fetch("http://localhost:3000/data/data.json")
-    .then(res => res.json())
-    .then(res => this.setState({partnerData: res.data}))
+  componentDidMount() {
+    fetch("http://10.58.7.28:8000/partner")
+      .then((res) => res.json())
+      //.then((res) => console.log(res));
+      .then((res) => this.setState({ partnerData: res.information }));
+    //http://localhost:3000/data/data.json
+    //http://10.58.7.28:8000/partner
   }
 
-
   render() {
-    console.log(this.state.partnerData)
+    console.log(this.state.partnerData);
     return (
       <div className="Partner">
         <nav className="partner-nav">
@@ -35,7 +37,7 @@ export default class Partner extends Component {
           <PartnerAside />
 
           {/* 파트너 list */}
-          <PartnerList partnerData={this.state.partnerData}/>
+          <PartnerList partnerData={this.state.partnerData} />
         </main>
       </div>
     );
