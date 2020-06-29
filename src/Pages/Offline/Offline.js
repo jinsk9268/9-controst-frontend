@@ -55,7 +55,7 @@ export default class Offline extends Component {
                                     <div className="center-recommend-text">
                                         <div className="center-recommend-name">
                                             {this.state.partnerList[randomNumber]["name"]}
-                                            <span style={ this.state.partnerList[randomNumber]["level"][0] === "마" ? {color:"#ef8b24"} : this.state.partnerList[PartnerInfoRandomNum]["level"][0] === "전" ? {color:"#f5ba08"} : {color:"#91897F"}}> {this.state.partnerList && this.state.partnerList[PartnerInfoRandomNum]["level"]}</span>
+                                            <span style={ this.state.partnerList[randomNumber]["level"][0] === "마" ? {color:"#ef8b24"} : this.state.partnerList[randomNumber]["level"][0] === "전" ? {color:"#f5ba08"} : {color:"#91897F"}}> {this.state.partnerList && this.state.partnerList[randomNumber]["level"]}</span>
                                         </div>
                                         <div className="center-recommend-type">
                                             온라인상담<span>|</span>
