@@ -38,7 +38,6 @@ export default class Offline extends Component {
     }
 
     render() {
-        let PartnerInfoRandomNum = Math.floor(Math.random() * (this.state.partnerList.length - 1)); //0~ 갯수 -1
         let PartnerShowRandomNum = Math.floor(Math.random() * 2) + 1;
         console.log(PartnerShowRandomNum+"dsadasd");
         return (
