@@ -11,29 +11,30 @@ export class Signup extends React.Component {
       pw: "",
       pwre: "",
       nick: "",
+      msg: "",
+      pwCheck: "",
     };
   }
   idChangeEvent = (e) => {
     this.setState({ id: e.target.value });
     console.log("id >>> ", this.state.id);
   };
-
   pwChangeEvent = (e) => {
     this.setState({ pw: e.target.value });
     console.log("pw >>> ", this.state.pw);
   };
   pwreChangeEvent = (e) => {
     this.setState({ pwre: e.target.value });
-    console.log("pw >>> ", this.state.pwre);
+    console.log("pwre >>> ", this.state.pwre);
   };
   nickChangeEvent = (e) => {
     this.setState({ pwre: e.target.value });
     console.log("pw >>> ", this.state.pwre);
   };
-
   clickHandler = () => {
     //e.prevent.Default();
     //POST
+
     fetch("http://10.58.0.88:8000/users/signup", {
       method: "POST",
       body: JSON.stringify({
@@ -42,8 +43,48 @@ export class Signup extends React.Component {
         nickname: this.state.pwre,
       }), //이 )소괄호는 아직 fetch에 소괄호니까 밑에 then 가능
     })
-      .then((res) => res.json()) // 제이슨 바디로 온다...
+      .then((res) => res.json())
       .then((res) => console.log(res)); //그냥 콘솔에 뿌리고 끝 리턴 안함
+  };
+
+  idCheck = (e) => {
+    e.preventDefault();
+    // ⬇︎은 백엔드로 fetch해서 입력된 값을 POST!
+    fetch("http://10.58.0.88:8000/users/signup", {
+      method: "POST",
+      body: JSON.stringify({
+        email: this.state.id,
+      }),
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .then((res) => console.log(res));
+  };
+
+  nickCheck = (e) => {
+    e.preventDefault();
+
+    // ⬇︎은 백엔드로 fetch해서 입력된 값을 POST!
+    fetch("http://10.58.0.88:8000/users/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nickname: this.state.nick,
+      }),
+    }).then((response) => {
+      if (response.status === 200) {
+        alert("사용 가능한 닉네임 입니다."); // 백엔드로 보낸 데이터 결과 200 일 경우
+        this.setState({ usable_id: true }); //사용 가능한 아이디 일 경우 state상태에 true값으로 변경, 나중에 회원가입 버튼 클릭 이벤트핸들러에 필요!
+      } else if (response.status === 400) {
+        alert("이미 사용중인 닉네임 입니다."); // 이미 데이터베이스에 있는 아이디일 경우 409
+      } else {
+        // 그 외에는 사용 불가한 아이디
+        alert("사용 불가한 닉네임입니다.");
+      }
+    });
   };
   //.then(res=> console.log(res)); 그냥 콘솔에 뿌리고 끝 리턴 안함 then은 겟이든 포스트던 불림. 에러던 뭐든 ,,,꼭 제이슨 바디가 잇어야만 들어오는 것이 아님.
   //.then(res=> console.log(res)); 위에 이미 뿌리니까 이 콘솔로그는 안되는거임.. 이거 생각보다 중요!!
@@ -52,6 +93,7 @@ export class Signup extends React.Component {
   //콘솔에서 200인지 ,400인지 확인 가능
 
   render() {
+    console.log(this.state.msg);
     return (
       <div className="signUp-email-content">
         <h2 className="signUp-head">이메일로 회원가입</h2>
@@ -75,6 +117,7 @@ export class Signup extends React.Component {
                   autofocus=""
                 />
                 <button
+                  onClick={this.idCheck}
                   type="button"
                   className="signUp-input-box-btn-inline-1"
                   id="btnOverlapCheckEmail"
@@ -141,6 +184,7 @@ export class Signup extends React.Component {
                   maxlength="8"
                 />
                 <button
+                  onClick={this.nickCheck}
                   type="button"
                   className="signUp-input-box-btn-inline-2"
                   id="btnOverlapCheckNickname"
