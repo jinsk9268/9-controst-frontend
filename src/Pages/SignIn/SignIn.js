@@ -10,6 +10,7 @@ class SignIn extends React.Component {
       pw: "",
     };
   }
+
   idChangeEvent = (e) => {
     this.setState({ id: e.target.value });
     console.log("id >>> ", this.state.id);
@@ -23,7 +24,7 @@ class SignIn extends React.Component {
   clickHandler = () => {
     //e.prevent.Default();
     //POST
-    fetch("http://10.58.6.241:8000/users/signin", {
+    fetch("http://10.58.0.88:8000/users/signup", {
       method: "POST",
       body: JSON.stringify({
         email: this.state.id,
@@ -39,15 +40,18 @@ class SignIn extends React.Component {
       <div className="signIn-container">
         <h2 className="signIn-head">이메일 로그인</h2>
         <div className="signIn-input-box">
-          <label for="userEmailLogin">
+          <label for="user-email-login">
             <em className="user-head">아이디</em>
             <input
               type="text"
               onChange={this.idChangeEvent}
               className="idinput"
-              id="userEmailLogin"
+              id="user-email-login"
               maxlength="50"
               autofocus=""
+              style={{
+                borderColor: this.state.id.length > 1 ? "#f57c00" : "#9e9e9e",
+              }}
             />
           </label>
           <div className="signIn-npminfo" id="emailLoginMsg">
@@ -55,7 +59,7 @@ class SignIn extends React.Component {
           </div>
         </div>
         <div className="signIn-input-box">
-          <label for="userPwLogin">
+          <label for="user-pw-login">
             <em className="user-head">비밀번호</em>
             <input
               type="password"
@@ -63,6 +67,9 @@ class SignIn extends React.Component {
               className="pwinput"
               minlength="6"
               maxlength="14"
+              style={{
+                borderColor: this.state.pw.length > 1 ? "#f57c00" : "#9e9e9e",
+              }}
             />
           </label>
           <div className="signIn-info" id="pwLoginMsg"></div>
@@ -77,18 +84,16 @@ class SignIn extends React.Component {
           id="btnLoginEmail"
           style={{
             backgroundColor:
-              this.state.id.includes("@") && this.state.pw.length > 5
-                ? "#e066ff"
-                : "#0094f69f",
+              this.state.id && this.state.pw.length > 5 ? "#f57c00" : "#f59000",
           }}
         >
           로그인
         </button>
         <div className="login-info-txt">
-          <button className="login-link-join" id="goJoinMain2" type="button">
+          <button className="login-link-join-1" id="goJoinMain2" type="button">
             회원가입
           </button>
-          <button className="login-link-join" id="gofindPw" type="button">
+          <button className="login-link-join-2" id="gofindPw" type="button">
             비밀번호 찾기
           </button>
         </div>
