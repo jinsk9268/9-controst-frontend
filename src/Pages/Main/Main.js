@@ -105,7 +105,7 @@ export default class Main extends Component {
       <div className="container">
         <Sectionone/>
         <Sectiontwo stateDay={this.state.day} MouseOver={this.mouseOver} MouseOut={this.mouseOut}/>
-        <Sectionthree/>
+        <Sectionthree />
         <Sectionfour service={this.state.service} tabHandler={this.tabHandler} theraphyArr={this.state.theraphyArr} countChange={this.countChange}/>
         <Sectionfive reviewData={this.state.reviewData} slidePage={this.state.slidePage} slickLeft={this.slickSlideLeft} slickRight={this.slickSlideRight} clickdot={this.clickdot}/>
         <Sectionsix/>

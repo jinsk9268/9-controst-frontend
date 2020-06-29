@@ -29,4 +29,5 @@ class Sectionthree extends Component {
         )
     }
 }
+
 export default React.memo(Sectionthree);
