@@ -8,6 +8,8 @@ export default class Offline extends Component {
         this.state = {
             partnerList : "",
             locationList : "",
+            showDetail : "",
+            detailIndex :"",
         }
     }
 
@@ -42,13 +44,38 @@ export default class Offline extends Component {
         }
       };
     
-    randomNum =() => {
+    randomNum = () => {
         return Math.floor(Math.random() * (this.state.partnerList.length - 1));
+    }
+
+    listClick = (i) => {
+        if(i === "close"){
+            this.setState({
+                showDetail : "",
+            })
+        } else{
+        this.setState({
+            detailIndex : i.toString(),
+            showDetail : " is-show",
+        })
+        }
     }
     
     render() {
         let PartnerShowRandomNum = Math.floor(Math.random() * 2) + 1;
-        console.log(this.state.locationList)
+
+        let validationIndex = () => {
+            let imgIndexArr = [];
+            let alphabetArr = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T"];
+            for(let i in this.state.locationList){
+                if(this.state.locationList[i]["vip"] === true){
+                    imgIndexArr.push('trost');
+                }
+            }
+            let alphabetRemovedArr = alphabetArr.splice(imgIndexArr.length, alphabetArr.length-1);
+            let resultArr = imgIndexArr.concat(alphabetRemovedArr);
+            return resultArr;
+        }
         return (
             <div className="offline-container">
                 <aside className="offline-aside">
@@ -91,29 +118,74 @@ export default class Offline extends Component {
                             )})}
                         </div>
                         <ul className="center-list">
-                            {Array(20).fill().map(()=>{
+                            {this.state.locationList && this.state.locationList.map((_,i) => {
                                return(
-                               <li className="center-item">
-                                   <div className="center-item-img"></div>
+                               <li className="center-item" onClick={() => this.listClick(i)}>
+                                   <div className="center-item-img" style={{backgroundImage:`url(https://d2qrvi4l1nprmf.cloudfront.net/images/service/mobile/offline/is_unselected_mark/${validationIndex()[i]}_unselected.png)`}}></div>
                                    <div className="center-item-text">
-                                       <div className="center-item-name">위코드상담센터</div>
+                                       <div className="center-item-name">{this.state.locationList[i]["center"]}</div>
                                        <div className="center-item-type">
-                                            심리상담센터
+                                            {this.state.locationList[i]["type"]}
                                        </div>
                                        <div className="center-item-distance">
-                                           671m<span>|</span>서울특별시 강남구 테헤란로 427 겁나김겁나김겁나김
+                                           671m<span>|</span>{this.state.locationList[i]["distance"]}
                                        </div>
                                        <div className="center-item-number">
-                                           02-2226-8772
+                                           {this.state.locationList[i]["number"]}
                                        </div>
                                    </div>
                                </li>
-                               
                             )})}
                         </ul>
                     </div>
                 </aside>
-                <Map location={this.state.locationList}/>
+                <div className={`center-detail-box${this.state.showDetail}`}>
+                    <div className="center-detail-close" onClick={() => this.listClick("close")}>
+                        <div className="close-img"/>
+                    </div>
+                    <div className="center-detail-item">
+                        <div className="detail-title">
+                            <div className="detail-title-name">{this.state.detailIndex && this.state.locationList[this.state.detailIndex]["center"]}</div>
+                            <div className="detail-title-type">{this.state.detailIndex && this.state.locationList[this.state.detailIndex]["type"]}</div>
+                            <div className="find-road">
+                                <div>길찾기</div>
+                            </div>
+                        </div>
+                        <div className="border-line"></div>
+                        <div className="center-detail-data">
+                            <div className="center-address">
+                                <div className="center-address-icon"/>
+                                <div className="center-new-address">{this.state.detailIndex && this.state.locationList[this.state.detailIndex]["distance"]}</div>
+                                <div className="center-old-address">{`지번) ${this.state.detailIndex && this.state.locationList[this.state.detailIndex]["distance"]}`}</div>
+                            </div>
+                            <div className="center-number">
+                                <div className="center-number-icon"/>
+                                <div className="center-number-text">{this.state.detailIndex && this.state.locationList[this.state.detailIndex]["number"]}</div>
+                            </div>
+                            <div className="center-url">
+                                <div className="center-url-icon"/>
+                                <div className="center-url-text"><a href="https://theraphy.com">https://theraphy.com</a></div>
+                            </div>
+                            <div className="center-profile">
+                                <div className="center-profile-icon"/>
+                                <div className="center-profile-item">
+                                    <div className="center-profile-img"></div>
+                                    <div className="center-profile-name">{this.state.detailIndex && this.state.locationList[this.state.detailIndex]["name"]}</div>
+                                    <div className="center-profile-level">{this.state.detailIndex && this.state.locationList[this.state.detailIndex]["level"]}</div>
+                                </div>
+                            </div>
+                            <div className="detail-banner"></div>
+                            <div className="theraphy-info">
+                                <div className="theraphy-info-title">상담관련 정보</div>
+                                <div className="theraphy-info-sub-title">상담</div>
+                                <div className="theraphy-info-text">아동상담, 청소년상담, 성인상담</div>
+                                <div className="theraphy-info-notice">* 모든 정보는 변경이 있을 수 있습니다. 반드시 전화 확인 후 방문해주세요.</div>
+                                <div className="info-change-request">정보 수정 요청 ></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <Map location={this.state.locationList} clickIndex={this.state.detailIndex}/>
             </div>
         )
     }
