@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "Component/Footer/Footer";
+import { Footer } from "Component/Footer/Footer";
 
 export default class Main extends Component {
   render() {
@@ -323,6 +325,7 @@ export default class Main extends Component {
             </div>
           </div>
         </section>
+        <Footer />
       </div>
     );
   }
