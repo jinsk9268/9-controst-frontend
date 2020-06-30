@@ -3,6 +3,9 @@
   margin: 0 auto;
   padding: 32px 0px 20px;
   color: var(--black);
+  //nav 연결
+  position: relative;
+  top: 72px;
 
   :focus {
     outline: none;
@@ -638,6 +641,27 @@
                 font-weight: bold;
               }
             }
+          }
+        }
+      }
+
+      .partner-no-data {
+        margin: 120px auto 200px auto;
+
+        p {
+          font-size: 14px;
+          line-height: 1.5;
+          text-align: center;
+          color: var(--lightBlack);
+
+          &::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 16px auto;
+            background: url(https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/ic_caution.png) no-repeat center;
+            background-size: 40px auto;
           }
         }
       }

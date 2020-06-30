@@ -43,7 +43,6 @@ export default class PartnerCard extends Component {
   };
 
   render() {
-    //console.log(this.recommendPartner())
     return (
       <article className={this.ptRecomendAdd()}>
         <button className={this.state.btnWishChange ? 'btn-partner-wish add-wish' : 'btn-partner-wish'} onClick={this.ptWishClassName}>
