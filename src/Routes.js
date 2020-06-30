@@ -10,6 +10,7 @@ import Login from "Pages/Login/Login";
 import Nav from "Component/Nav/Nav";
 import Partner from "Pages/Partner/Partner";
 
+
 class Routes extends React.Component {
   render() {
     return (
