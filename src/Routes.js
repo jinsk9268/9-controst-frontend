@@ -6,6 +6,7 @@ import Nav from 'Component/Nav/Nav';
 import Partner from 'Pages/Partner/Partner';
 import PartnerProfile from 'Pages/Partner/PartnerProfile';
 
+
 class Routes extends React.Component {
   render() {
     return (
