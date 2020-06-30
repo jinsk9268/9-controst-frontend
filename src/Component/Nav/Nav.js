@@ -15,9 +15,8 @@ export class Nav extends React.Component {
     })
   }
   mouseOver =(e) => {
-    console.log(e.target.id)
     this.setState({
-      dropIndex : e.target.id,
+      dropIndex : e
     })
   }
   mouseLeave = () => {
@@ -25,10 +24,11 @@ export class Nav extends React.Component {
       dropIndex : "",
     })
   }
+
   render() {
     let displayBlock = {display : 'block'};
     let displayNone = {display: 'none'};
-    console.log(this.state.dropIndex)
+
     return (
       <nav className="navbar">
         <div className="navbar-logo">
@@ -36,8 +36,8 @@ export class Nav extends React.Component {
         </div>
         <div className="dropdown-first-btn">
           <div className="dropdown" onMouseLeave={this.mouseLeave}>
-            <button className="dropbtn-left" onMouseOver={this.mouseOver}  id="0">심리상담 받기</button>
-            <div className="dropdown-content" style={this.state.dropIndex === "0" ? displayBlock : displayNone }>
+            <button className="dropbtn-left" onMouseOver={() => this.mouseOver(0)}>심리상담 받기</button>
+            <div className="dropdown-content" style={this.state.dropIndex === 0 ? displayBlock : displayNone }>
               <Link to="partner" onClick={this.dropClick}> 상담사 찾기</Link>
               <Link to="offline" onClick={this.dropClick}>상담센터 찾기</Link>
               <Link to="#" onClick={this.dropClick}>상담하기</Link>
@@ -46,8 +46,8 @@ export class Nav extends React.Component {
         </div>
         <div className="dropdown-second-btn">
           <div className="dropdown" onMouseLeave={this.mouseLeave}>
-            <button className="dropbtn-center" onMouseOver={this.mouseOver} id="1">자기분석 테스트</button>
-            <div className="dropdown-content" style={this.state.dropIndex === "1" ? displayBlock : displayNone}>
+            <button className="dropbtn-center" onMouseOver={() => this.mouseOver(1)}>자기분석 테스트</button>
+            <div className="dropdown-content" style={this.state.dropIndex === 1 ? displayBlock : displayNone}>
               <Link to="#" onClick={this.dropClick}>심리검사</Link>
               <Link to="#" onClick={this.dropClick}>성격검사</Link>
             </div>
@@ -55,8 +55,8 @@ export class Nav extends React.Component {
         </div>
         <div className="dropdown-third-btn">
           <div className="dropdown" onMouseLeave={this.mouseLeave}>
-            <button className="dropbtn-right" onMouseOver={this.mouseOver} id="2">약물치료 바로알기</button>
-            <div className="dropdown-content" style={this.state.dropIndex === "2" ? displayBlock : displayNone}>
+            <button className="dropbtn-right" onMouseOver={() => this.mouseOver(2)}>약물치료 바로알기</button>
+            <div className="dropdown-content" style={this.state.dropIndex === 2 ? displayBlock : displayNone}>
               <Link to="#" onClick={this.dropClick}>복용약 찾기</Link>
               <Link to="#" onClick={this.dropClick}>약물 의존도 자가체크</Link>
               <Link to="#" onClick={this.dropClick}>정신의학과 찾기</Link>
@@ -79,4 +79,5 @@ export class Nav extends React.Component {
     );
   }
 }
+
 export default Nav;

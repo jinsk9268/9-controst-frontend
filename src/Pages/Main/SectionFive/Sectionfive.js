@@ -11,7 +11,7 @@ export default class Sectionfive extends Component {
             <h2 className="content-title">심리상담 후기</h2>
             <div className="review-list-box">
               <ul className="review-list"  style={{transform: `translateX(${slideCalc}%)`}}>
-                {this.props.reviewData.length > 0 && Array(19).fill().map((_,i) => { {/* reviewData가 불러와지기 전에 사용을하면 에러가 나오기때문에 Data가 생기면 작동하도록 작성 */}
+                {this.props.reviewData.length > 0 && this.props.reviewData.map((_,i) => { {/* reviewData가 불러와지기 전에 사용을하면 에러가 나오기때문에 Data가 생기면 작동하도록 작성 */}
                   return (<Review key={i} program={this.props.reviewData[i]["program"]} hashtag={this.props.reviewData[i]["hashtag"]} article={this.props.reviewData[i]["article"]} id={this.props.reviewData[i]["id"]}/>)
                 })}
               </ul>

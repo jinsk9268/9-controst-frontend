@@ -9,8 +9,8 @@ export default class Textcontent extends Component {
             <div className="text-service-slide">
               <div className="text-service-slide-bg">
                 <ul className="text-service-slide-images">
-                  {this.props.theraphyArr.map((x) => {
-                    return <Theraphy theraphyShow={x} />
+                  {this.props.theraphyArr.map((showclass) => {
+                    return <Theraphy theraphyShow={showclass} />
                   })}
                 </ul>
               </div>
