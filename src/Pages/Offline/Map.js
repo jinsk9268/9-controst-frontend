@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
 import './Offline.scss';
 class Map extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            location : ""
+        }
+
+        
+    }
+
+
     componentDidMount() {
         const script = document.createElement('script');
         script.async = true;
+        script.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey=76a449f1dae5315175afe4994035d80d&libraries=LIBRARY";
+        script.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey=76a449f1dae5315175afe4994035d80d&libraries=services";
         script.src = "https://dapi.kakao.com/v2/maps/sdk.js?appkey=76a449f1dae5315175afe4994035d80d&autoload=false";
         document.head.appendChild(script);
         script.onload = () => {
             const { kakao } = window;
             kakao.maps.load(() => {
+                
             //     let el = document.getElementById('map');
             //     let map = new kakao.maps.Map(el, {
             //         center: new kakao.maps.LatLng(37.504481, 127.049007)
@@ -53,6 +67,7 @@ class Map extends Component {
             //     //     location: new kakao.maps.LatLng(33.450701, 126.570667)
             //     // });
             // });
+                
                 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
                     mapOption = { 
                         center: new kakao.maps.LatLng(37.504481, 127.049007), // 지도의 중심좌표
@@ -68,26 +83,26 @@ class Map extends Component {
                 // 마커를 표시할 위치와 title 객체 배열입니다 
                 var positions = [
                     {
-                        title: '카카오', 
-                        latlng: new kakao.maps.LatLng(37.504471, 127.049003),
+                        title: this.state.location[0]["center"], 
+                        latlng: new kakao.maps.LatLng(this.state.location[0]["coordinate"].split(",")[0], this.state.location[0]["coordinate"].split(",")[1]),
                         unSelectedImg : "https://d2qrvi4l1nprmf.cloudfront.net/images/service/mobile/offline/is_unselected_mark/trost_unselected.png",
                         SelectedImg : "https://d2qrvi4l1nprmf.cloudfront.net/images/service/mobile/offline/is_selected_mark/trost_selected.png"
                     },
                     {
-                        title: '생태연못', 
-                        latlng: new kakao.maps.LatLng(37.501390, 127.049010),
+                        title: this.state.location[1]["center"],
+                        latlng: new kakao.maps.LatLng(this.state.location[1]["coordinate"].split(",")[0], this.state.location[1]["coordinate"].split(",")[1]),
                         unSelectedImg : "https://d2qrvi4l1nprmf.cloudfront.net/images/service/mobile/offline/is_unselected_mark/A_unselected.png",
                         SelectedImg : "https://d2qrvi4l1nprmf.cloudfront.net/images/service/mobile/offline/is_selected_mark/A_selected.png"
                     },
                     {
-                        title: '텃밭', 
-                        latlng: new kakao.maps.LatLng(37.502220, 127.049043),
+                        title: this.state.location[2]["center"],
+                        latlng: new kakao.maps.LatLng(this.state.location[2]["coordinate"].split(",")[0], this.state.location[2]["coordinate"].split(",")[1]),
                         unSelectedImg : "https://d2qrvi4l1nprmf.cloudfront.net/images/service/mobile/offline/is_unselected_mark/B_unselected.png",
                         SelectedImg : "https://d2qrvi4l1nprmf.cloudfront.net/images/service/mobile/offline/is_selected_mark/B_selected.png"
                     },
                     {
-                        title: '근린공원',
-                        latlng: new kakao.maps.LatLng(37.503138, 127.040750),
+                        title: this.state.location[3]["center"],
+                        latlng: new kakao.maps.LatLng(this.state.location[3]["coordinate"].split(",")[0], this.state.location[3]["coordinate"].split(",")[1]),
                         unSelectedImg : "https://d2qrvi4l1nprmf.cloudfront.net/images/service/mobile/offline/is_unselected_mark/C_unselected.png",
                         SelectedImg : "https://d2qrvi4l1nprmf.cloudfront.net/images/service/mobile/offline/is_selected_mark/C_selected.png"
                     }
@@ -133,6 +148,9 @@ class Map extends Component {
                         marker[i].setZIndex(3);         //z-index 설정해준다.
                     });
                 }
+                
+
+                
 
                 // kakao.maps.event.addListener(markerTwo, 'click', function() {
                 //     var markerImage = new kakao.maps.MarkerImage(
@@ -141,10 +159,14 @@ class Map extends Component {
                 //     markerTwo.setImage(markerImage);
                 // });
             })
+            this.setState({
+                location : this.props.location,
+            })
         }
-    
     }
+ 
     render() {
+        
         return (
             <div className="map" id="map"></div>
         );

@@ -7,6 +7,7 @@ export default class Offline extends Component {
 
         this.state = {
             partnerList : "",
+            locationList : "",
         }
     }
 
@@ -18,6 +19,14 @@ export default class Offline extends Component {
                 partnerList : res["information"],
             })
         })
+        fetch('http://localhost:3000/data/location.json')
+        .then(res => res.json())
+        .then(res => {
+            this.setState({
+                locationList : res["location"],
+            })
+        })
+        
     }
 
     ptPointClassName = (num, PartnerstarNum) => {
@@ -36,10 +45,10 @@ export default class Offline extends Component {
     randomNum =() => {
         return Math.floor(Math.random() * (this.state.partnerList.length - 1));
     }
-
+    
     render() {
         let PartnerShowRandomNum = Math.floor(Math.random() * 2) + 1;
-        console.log(PartnerShowRandomNum+"dsadasd");
+        console.log(this.state.locationList)
         return (
             <div className="offline-container">
                 <aside className="offline-aside">
@@ -104,7 +113,7 @@ export default class Offline extends Component {
                         </ul>
                     </div>
                 </aside>
-                <Map/>
+                <Map location={this.state.locationList}/>
             </div>
         )
     }
