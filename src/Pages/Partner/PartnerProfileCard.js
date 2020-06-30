@@ -2,11 +2,51 @@ import React, { Component } from 'react';
 import './PartnerProfile.scss';
 
 export default class PartnerProfileCard extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      btnProfileWishChange: false,
+    };
+  }
+
+  clickPtWishClassName = () => {
+    this.setState({ btnProfileWishChange: !this.state.btnProfileWishChange });
+  };
+
+  changePositionClassName = () => {
+    if (this.props.level === '마스터 상담사') {
+      return 'partner-profile-position master';
+    } else if (this.props.level === '전문 상담사') {
+      return 'partner-profile-position sub';
+    } else if (this.props.level === '일반 상담사') {
+      return 'partner-profile-position nomal';
+    }
+  };
+
+  changePointClassName = (num) => {
+    let starNum = this.props.point - num;
+    if (starNum >= 0) {
+      return 'star-point full';
+    } else if (-1 < starNum && starNum < -0.5) {
+      return 'star-point';
+    } else if (-0.5 <= starNum && starNum < 0) {
+      return 'star-point half';
+    } else if (this.props.point - num <= -1) {
+      return 'star-point';
+    }
+  };
+
   render() {
     return (
       <div className='partner-profile-card-wrap'>
         <article className='partner-profile-card'>
-          <button className='btn-partner-profile-wish'>상담사 찜하기</button>
+          <button
+            className={this.state.btnProfileWishChange ? 'btn-partner-profile-wish add-wish' : 'btn-partner-profile-wish'}
+            onClick={this.clickPtWishClassName}
+          >
+            상담사 찜하기
+          </button>
           <div className='partner-profile-wrap-info'>
             <div className='partner-wrap-img'>
               <img className='partner-img' alt='상담사 사진' src='https://d2qrvi4l1nprmf.cloudfront.net/images/partner/1548650941_.png' />
@@ -14,13 +54,13 @@ export default class PartnerProfileCard extends Component {
             <div className='partner-wrap-text'>
               <div className='partner-text-info'>
                 <h3>상담사 이름</h3>
-                <h3 className='partner-profile-position'>상담사 직책</h3>
+                <h3 className='partner-profile-position master'>마스터 상담사</h3>
               </div>
               <div className='partner-reputation'>
                 <div className='partner-point-star'>
                   <ol>
-                    <li className='star-point'></li>
-                    <li className='star-point'></li>
+                    <li className='star-point full'></li>
+                    <li className='star-point half'></li>
                     <li className='star-point'></li>
                     <li className='star-point'></li>
                     <li className='star-point'></li>

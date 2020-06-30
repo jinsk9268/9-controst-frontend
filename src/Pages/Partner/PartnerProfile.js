@@ -7,7 +7,25 @@ import PartnerProfileReservation from './PartnerProfileReservation';
 import PartnerProfileReview from './PartnerProfileReview';
 import PartnerProfileAside from './PartnerProfileAside';
 
+const ptContentTab = {
+  tabInfo: <PartnerProfileInfo />,
+  tabReservation: <PartnerProfileReservation />,
+  tabReview: <PartnerProfileReview />,
+};
+
 export default class PartnerProfile extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      showTab: 'tabInfo',
+    };
+  }
+
+  clickShowTab = (tabName) => {
+    this.setState({ showTab: tabName });
+  };
+
   render() {
     return (
       <div className='PartnerProfile'>
@@ -26,17 +44,27 @@ export default class PartnerProfile extends Component {
             <div className='partner-profile-contents'>
               <header className='profile-contents-wrap-list'>
                 <ul className='content-list'>
-                  <li className='content-el is-click'>상담사 정보</li>
-                  <li className='content-el'>예약 방법</li>
-                  <li className='content-el'>상담 후기</li>
+                  <li
+                    className={this.state.showTab === 'tabInfo' ? 'content-el is-click' : 'content-el'}
+                    onClick={() => this.clickShowTab('tabInfo')}
+                  >
+                    상담사 정보
+                  </li>
+                  <li
+                    className={this.state.showTab === 'tabReservation' ? 'content-el is-click' : 'content-el'}
+                    onClick={() => this.clickShowTab('tabReservation')}
+                  >
+                    예약 방법
+                  </li>
+                  <li
+                    className={this.state.showTab === 'tabReview' ? 'content-el is-click' : 'content-el'}
+                    onClick={() => this.clickShowTab('tabReview')}
+                  >
+                    상담 후기
+                  </li>
                 </ul>
               </header>
-              {/* 상담사 정보 -> 컴포넌트 */}
-              <PartnerProfileInfo />
-              {/* 예약 방법 -> 컴포넌트 */}
-              <PartnerProfileReservation />
-              {/* 상담 후기 -> 컴포넌트 */}
-              <PartnerProfileReview />
+              {ptContentTab[this.state.showTab]}
             </div>
           </section>
           {/* 사이드바 구현 */}
