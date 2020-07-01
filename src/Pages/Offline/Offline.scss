@@ -194,6 +194,59 @@
           }
         }
       }
+      .center-pagination {
+        width: 100%;
+        position: relative;
+        padding-top: 24px;
+        margin-bottom: 62px;
+        text-align: center;
+        .pagination-btn-list {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .pagination-left-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #e0e0e0;
+            background: #fff
+              url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAqCAMAAAB7ha4AAAAARVBMVEUAAACenp7j4+Ofn5+enp6fn5+fn5+goKCkpKSlpaWenp6enp6fn5+fn5+enp6goKCenp6goKCgoKChoaGioqKlpaWenp6gk2HIAAAAFnRSTlMA1QPqqpqWLBUI893HuYmHdGNSRDcidSQWkQAAAJlJREFUSMft1TkWwyAMRVERbAyex7f/paZNB8Inxy50688MQowx5obOhfJwcJ0onR5Xnnb4U1SOHt8pluvpD1HYYbhE4RpgL49v4KKoRAdbaXiFMYpSHGEtiy4wJVFLEywFuU8LTZIKqYH2k+0/k8rOLdc2wCzVZghPD3B/i/59yM9f01sP7S2lorbYvalc13w4b/syjTHmxxeICAnd6JQXdQAAAABJRU5ErkJggg==)
+              no-repeat;
+            background-size: auto 28px;
+            margin-right: 6px;
+          }
+          .pagination {
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            background-color: #fff;
+            &.btn-1 a {
+              color: var(--themeColor);
+            }
+            a {
+              width: 100%;
+              height: 100%;
+              font-size: 12px;
+              text-align: center;
+              text-decoration: none;
+              color: var(--black);
+              &:visited {
+                color: none;
+              }
+            }
+          }
+          .pagination-right-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #e0e0e0;
+            background: #fff
+              url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAqCAMAAAB7ha4AAAAARVBMVEUAAACenp7j4+Ofn5+enp6fn5+fn5+goKCkpKSlpaWenp6enp6fn5+fn5+enp6goKCenp6goKCgoKChoaGioqKlpaWenp6gk2HIAAAAFnRSTlMA1QPqqpqWLBUI893HuYmHdGNSRDcidSQWkQAAAJlJREFUSMft1TkWwyAMRVERbAyex7f/paZNB8Inxy50688MQowx5obOhfJwcJ0onR5Xnnb4U1SOHt8pluvpD1HYYbhE4RpgL49v4KKoRAdbaXiFMYpSHGEtiy4wJVFLEywFuU8LTZIKqYH2k+0/k8rOLdc2wCzVZghPD3B/i/59yM9f01sP7S2lorbYvalc13w4b/syjTHmxxeICAnd6JQXdQAAAABJRU5ErkJggg==)
+              no-repeat;
+            background-size: auto 28px;
+            background-position: -36px center;
+            margin-left: 6px;
+          }
+        }
+      }
     }
   }
   .center-detail-box {
@@ -391,7 +444,6 @@
           }
         }
         .detail-banner {
-          background-image: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/mobile/offline/mobile_offline_banner_02.png?update=20191114");
           width: 100%;
           height: 100px;
           background-size: cover;
@@ -437,5 +489,135 @@
     height: calc(100vh - 72px);
     position: absolute;
     right: 0;
+  }
+  .search-offline-field {
+    z-index: 4;
+    position: fixed;
+    right: 24px;
+    top: 84px;
+    width: 352px;
+    height: 150px;
+
+    .search-offline-input-area {
+      width: 100%;
+      height: 45px;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+
+      .search-offline-input-img {
+        width: 24px;
+        height: 24px;
+        background-image: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/mobile/offline/pc-offline-icon-24.png");
+        background-size: cover;
+        background-position: 0 0;
+        position: absolute;
+        top: 10px;
+        left: 8px;
+      }
+      .search-offline-input {
+        position: absolute;
+        right: 0;
+        outline: none;
+        border: none;
+        width: calc(100% - 36px);
+        font-size: 14px;
+        color: var(--black);
+      }
+    }
+    .search-offline-keyword {
+      width: 100%;
+      height: 104px;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      position: relative;
+
+      .search-offline-keyword-top {
+        .search-offline-keyword-top-left {
+          .filter-img {
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: 10px;
+            left: 8px;
+            background-image: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/mobile/offline/pc-offline-icon-24.png");
+            background-size: cover;
+            background-position: 72px 0;
+          }
+          span {
+            display: inline-block;
+            position: absolute;
+            top: 11px;
+            left: 36px;
+            font-size: 14px;
+            line-height: 22px;
+            color: #9e9e9e;
+          }
+        }
+        .search-offline-keyword-refresh {
+          position: absolute;
+          width: 24px;
+          height: 24px;
+          background-image: url("https://d2qrvi4l1nprmf.cloudfront.net/images/service/mobile/offline/pc-offline-icon-24.png");
+          background-size: cover;
+          background-position: 24px 0;
+          right: 8px;
+          top: 10px;
+          cursor: pointer;
+        }
+      }
+      .search-keyword-list {
+        position: absolute;
+        bottom: 10px;
+        left: 16px;
+        width: 320px;
+        height: 44px;
+        display: flex;
+        border-collapse: collapse;
+        text-align: center;
+        .search-keyword-age {
+          flex: 1;
+          font-size: 14px;
+          line-height: 42px;
+          color: #9e9e9e;
+          position: relative;
+          border: 1px solid #e0e0e0;
+          cursor: pointer;
+          &:hover {
+            background: #f7f7f7;
+          }
+        }
+        .search-keyword-type {
+          flex: 1;
+          font-size: 14px;
+          line-height: 42px;
+          color: #9e9e9e;
+          position: relative;
+          border: 1px solid #e0e0e0;
+          border-left: none;
+          border-right: none;
+          cursor: pointer;
+          &:hover {
+            background: #f7f7f7;
+          }
+        }
+        .search-keyword-keyword {
+          flex: 1;
+          font-size: 14px;
+          line-height: 42px;
+          color: #9e9e9e;
+          position: relative;
+          border: 1px solid #e0e0e0;
+          cursor: pointer;
+          &:hover {
+            background: #f7f7f7;
+          }
+        }
+      }
+    }
   }
 }
