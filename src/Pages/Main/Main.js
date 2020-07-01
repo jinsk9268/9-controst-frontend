@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import 'Pages/Main/Main.scss';
-import Sectionone from './SectionOne/Sectionone';
-import Sectiontwo from './SectionTwo/Sectiontwo';
-import Sectionthree from './Sectionthree';
-import Sectionfour from './SectionFour/Sectionfour';
-import Sectionfive from './SectionFive/Sectionfive';
-import Sectionsix from './SectionSix/Sectionsix';
-import Sectionseven from './Sectionseven';
-import Sectioneight from './Sectioneight';
-import TopBtn from 'Component/TopBtn';
+import React, { Component } from "react";
+import "Pages/Main/Main.scss";
+import Sectionone from "./SectionOne/Sectionone";
+import Sectiontwo from "./SectionTwo/Sectiontwo";
+import Sectionthree from "./Sectionthree";
+import Sectionfour from "./SectionFour/Sectionfour";
+import Sectionfive from "./SectionFive/Sectionfive";
+import Sectionsix from "./SectionSix/Sectionsix";
+import Sectionseven from "./Sectionseven";
+import Sectioneight from "./Sectioneight";
+import TopBtn from "Component/TopBtn";
 
 export default class Main extends Component {
   constructor() {
     super();
     this.state = {
-      day: '',
-      theraphyArr: ['', '', '', '', ''],
-      service: 'textService',
+      day: "",
+      theraphyArr: ["", "", "", "", ""],
+      service: "textService",
       slidePage: 0,
-      reviewData: '',
+      reviewData: "",
       count: 0,
     };
   }
@@ -55,17 +55,17 @@ export default class Main extends Component {
   mouseOut = () => {
     //sectiontwo 마우스아웃
     this.setState({
-      day: '',
+      day: "",
     });
   };
   componentDidMount() {
     this.transitionSlides(0); //Interval을 시작 delay없이 실행시키기 위해
     this.intervalHandler();
-    fetch('http://localhost:3000/data/reviewData.json') //sectionfive 후기 데이터 불러오기
+    fetch("http://localhost:3000/data/reviewData.json") //sectionfive 후기 데이터 불러오기
       .then((res) => res.json())
       .then((res) => {
         this.setState({
-          reviewData: res['data'],
+          reviewData: res["data"],
         });
       });
   }
@@ -89,8 +89,8 @@ export default class Main extends Component {
 
   transitionSlides = (count) => {
     //sectionfour - textService 애니메이션 함수
-    let Arr = ['', '', '', '', ''];
-    Arr[count] = ' is-show'; //2번
+    let Arr = ["", "", "", "", ""];
+    Arr[count] = " is-show"; //2번
     this.setState({
       theraphyArr: Arr,
     });
@@ -109,7 +109,7 @@ export default class Main extends Component {
 
   render() {
     return (
-      <div className='container'>
+      <div className="container">
         <Sectionone />
         <Sectiontwo stateDay={this.state.day} MouseOver={this.mouseOver} MouseOut={this.mouseOut} />
         <Sectionthree />
