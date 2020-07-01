@@ -11,6 +11,7 @@ import Nav from "Component/Nav/Nav";
 import Partner from "Pages/Partner/Partner";
 import Offline from "Pages/Offline/Offline";
 
+
 class Routes extends React.Component {
   render() {
     return (
