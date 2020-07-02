@@ -433,7 +433,8 @@ export class Signup extends React.Component {
           </Link>
         </div>
         <button
-          className="join-style-popup-close js-popup-bg-close"
+          className="join-style-popup-close
+          js-popup-bg-close"
           type="button"
         >
           닫기
