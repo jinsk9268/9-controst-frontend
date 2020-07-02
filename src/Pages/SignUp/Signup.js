@@ -20,30 +20,37 @@ export class Signup extends React.Component {
       textColor: "",
     };
   }
+
   idChangeEvent = (e) => {
     this.setState({ id: e.target.value });
     console.log("id >>> ", this.state.id);
   };
+
   pwreChangeEvent = (e) => {
     this.setState({ pwre: e.target.value });
     console.log("pwre >>> ", this.state.pwre);
   };
+
   nickChangeEvent = (e) => {
     this.setState({ nick: e.target.value });
     console.log("pw >>> ", this.state.pwre);
   };
+
   rmcodeChangeEvent = (e) => {
     this.setState({ rmcode: e.target.value });
     console.log("pw >>> ", this.state.pwre);
   };
+
   fitcodeChangeEvent = (e) => {
     this.setState({ fitcode: e.target.value });
     console.log("pw >>> ", this.state.pwre);
   };
+
   textColorEvent = (e) => {
     this.setState({ textColor: e.target.value });
     console.log("pw >>> ", this.state.pwre);
   };
+
   clickHandler = () => {
     //e.prevent.Default();
     //POST
@@ -58,6 +65,7 @@ export class Signup extends React.Component {
       .then((res) => res.json())
       .then((res) => console.log(res));
   };
+
   idCheck = (e) => {
     e.preventDefault();
     fetch("http://10.58.0.88:8000/user/signup", {
@@ -80,6 +88,7 @@ export class Signup extends React.Component {
       }
     });
   };
+
   nickCheck = (e) => {
     e.preventDefault();
     fetch("http://10.58.0.88:8000/user/signup", {
@@ -110,6 +119,7 @@ export class Signup extends React.Component {
       pw: e.target.value,
     });
   };
+
   //두번째 패스워드 입력창 set변환
   pwre = (e) => {
     e.preventDefault();
@@ -117,6 +127,7 @@ export class Signup extends React.Component {
       pwre: e.target.value,
     });
   };
+
   //첫번 째 두번 째 패스워드 일치 확인
   checkPW = (e) => {
     e.preventDefault();
@@ -140,6 +151,7 @@ export class Signup extends React.Component {
       }
     }
   };
+
   //첫번째 아이디 입력창 set변환
   id = (e) => {
     e.preventDefault();
@@ -147,6 +159,7 @@ export class Signup extends React.Component {
       id: e.target.value,
     });
   };
+
   //아이디 유효성 검사
   checkID = (e) => {
     e.preventDefault();
@@ -171,7 +184,7 @@ export class Signup extends React.Component {
   //콘솔에서 200인지 ,400인지 확인 가능
 
   render() {
-    console.log(this.state.msg);
+    // console.log(this.state.msg);
     return (
       <div className="signUp-email-content">
         <h2 className="signUp-head">이메일로 회원가입</h2>
@@ -410,13 +423,14 @@ export class Signup extends React.Component {
         </button>
         <div className="signUp-popup-info-txt">
           이미 트로스트 회원이신가요?
-          <button
+          <Link
+            to="/signin"
             className="signUp-popup-link-join"
             id="goLoginMain2"
             type="button"
           >
             로그인
-          </button>
+          </Link>
         </div>
         <button
           className="join-style-popup-close js-popup-bg-close"
@@ -428,4 +442,5 @@ export class Signup extends React.Component {
     );
   }
 }
+
 export default Signup;
