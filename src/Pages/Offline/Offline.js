@@ -22,6 +22,7 @@ export default class Offline extends Component {
           partnerList: res["information"],
         });
       });
+    // fetch("http://10.58.7.28:8000/offline")
     fetch("http://localhost:3000/data/location.json")
       .then((res) => res.json())
       .then((res) => {
@@ -29,6 +30,23 @@ export default class Offline extends Component {
           locationList: res["location"],
         });
       });
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log(prevProps.match.params.id, this.props.match.params.id);
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      //   fetch(
+      //     `http://10.58.7.28:8000/offline/?page=${+this.props.match.params.id}`
+      //   )
+      fetch("http://localhost:3000/data/location2.json")
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          this.setState({
+            locationList: res["location"],
+          });
+        });
+    }
   }
 
   ptPointClassName = (num, PartnerstarNum) => {
@@ -71,8 +89,9 @@ export default class Offline extends Component {
     if (!this.state.detailIndex) {
       return;
     }
+    console.log(this.state.locationList[this.state.detailIndex]);
     if (this.state.locationList[this.state.detailIndex]["trostPartners"][0]) {
-      if (e == 1) {
+      if (e === "name") {
         return this.state.locationList[this.state.detailIndex][
           "trostPartners"
         ][0]["name"];
@@ -147,7 +166,7 @@ export default class Offline extends Component {
         "T",
       ];
       for (let i in this.state.locationList) {
-        if (this.state.locationList[i]["isTrostPartnerCenter"] === 1) {
+        if (this.state.locationList[i]["isTrostPartnerCenter"] === true) {
           imgIndexArr.push("trost");
         }
       }
@@ -319,7 +338,10 @@ export default class Offline extends Component {
                 <li className="pagination btn-5">
                   <Link to="/">5</Link>
                 </li>
-                <li className="pagination-right-btn"></li>
+                <li
+                  onClick={() => this.props.history.push("/offline/2")}
+                  className="pagination-right-btn"
+                ></li>
               </ul>
             </div>
           </div>
@@ -390,7 +412,7 @@ export default class Offline extends Component {
               <div
                 className="center-profile"
                 style={
-                  this.profileCheck(1) !== null
+                  this.profileCheck("name") !== null
                     ? { display: "block" }
                     : { display: "none" }
                 }
@@ -403,7 +425,7 @@ export default class Offline extends Component {
                   />
 
                   <div className="center-profile-name">
-                    {this.profileCheck(1)}
+                    {this.profileCheck("name")}
                   </div>
                   {/* {console.log(this.profileCheck(2)[0])} */}
                   <div
@@ -444,8 +466,8 @@ export default class Offline extends Component {
                   {this.state.detailIndex &&
                     this.state.locationList[this.state.detailIndex][
                       "counselingTypes"
-                    ].map((counselingItem) => {
-                      return counselingItem + ", ";
+                    ].map((Type) => {
+                      return Type + ", ";
                     })}
                 </div>
                 <div className="theraphy-info-notice">
@@ -480,11 +502,13 @@ export default class Offline extends Component {
             </div>
           </div>
         </div>
-        <Map
-          location={this.state.locationList}
-          clickIndex={this.state.detailIndex}
-          markerClick={this.clickHandler}
-        />
+        {this.state.locationList.length > 0 && (
+          <Map
+            location={this.state.locationList}
+            clickIndex={this.state.detailIndex}
+            markerClick={this.clickHandler}
+          />
+        )}
       </div>
     );
   }
