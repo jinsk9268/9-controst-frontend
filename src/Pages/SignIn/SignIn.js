@@ -84,18 +84,32 @@ class SignIn extends React.Component {
           id="btnLoginEmail"
           style={{
             backgroundColor:
-              this.state.id && this.state.pw.length > 5 ? "#f57c00" : "#f59000",
+              this.state.id.includes("@") && this.state.pw.length > 5
+                ? "#f57c00"
+                : "#ffcc80",
           }}
         >
           로그인
         </button>
         <div className="login-info-txt">
-          <button className="login-link-join-1" id="goJoinMain2" type="button">
+          <Link
+            to="signup"
+            className="login-link-join-1"
+            id="goJoinMain2"
+            type="button"
+            style={{ textDecoration: "none" }}
+          >
             회원가입
-          </button>
-          <button className="login-link-join-2" id="gofindPw" type="button">
+          </Link>
+          <Link
+            to="#"
+            className="login-link-join-2"
+            id="gofindPw"
+            type="button"
+            style={{ textDecoration: "none" }}
+          >
             비밀번호 찾기
-          </button>
+          </Link>
         </div>
         <button
           id="popupLoginClose"
