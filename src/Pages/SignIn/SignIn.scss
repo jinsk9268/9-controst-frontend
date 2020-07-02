@@ -1,7 +1,3 @@
-body {
-  background-color: gray;
-}
-
 .signIn-container {
   z-index: 1;
   min-width: 496px;
@@ -15,6 +11,8 @@ body {
   -ms-transform: translate(-50%, -50%);
   background: #fff;
   border-radius: 10px;
+  border: 1px solid #9e9e9e7c;
+  box-shadow: 0.5px 0.5px 5px 1px #9e9e9e7c;
   .signIn-head {
     margin: 8px 0 40px 0;
     font-size: 28px;

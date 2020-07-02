@@ -33,6 +33,13 @@ class SignIn extends React.Component {
       }), //이 )소괄호는 아직 fetch에 소괄호니까 밑에 then 가능
     })
       .then((res) => res.json()) // 제이슨 바디로 온다...
+      .then((res) => {
+        if (res.token) {
+          //토큰이름은 종헌님이랑 같이 상의
+          localStorage.setItem("access_token", res.token); //access_token이름은 내가 정하는거 res.token은 그 토큰 종헌님한테 오는거 긴 토큰 이름임..
+          this.props.history.push("/");
+        }
+      })
       .then((res) => console.log(res)); //그냥 콘솔에 뿌리고 끝 리턴 안함
   };
 
@@ -42,7 +49,7 @@ class SignIn extends React.Component {
         <h2 className="signIn-head">이메일 로그인</h2>
         <div className="signIn-input-box">
           <label for="user-email-login">
-            <em className="user-head">아이디</em>
+            <em className="user-head">이메일</em>
             <input
               type="text"
               onChange={this.idChangeEvent}
@@ -94,7 +101,7 @@ class SignIn extends React.Component {
         </button>
         <div className="login-info-txt">
           <Link
-            to="signup"
+            to="/signup"
             className="login-link-join-1"
             id="goJoinMain2"
             type="button"
