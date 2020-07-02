@@ -9,11 +9,11 @@ class Map extends Component {
       clickIndex: "",
       positions: [],
       marker: {},
-      hi: "",
     };
   }
 
   componentDidMount() {
+    console.log("맵컴디마");
     const script = document.createElement("script");
     script.async = true;
     script.src =
@@ -31,10 +31,12 @@ class Map extends Component {
             center: new kakao.maps.LatLng(37.504481, 127.049007), // 지도의 중심좌표
             level: 5, // 지도의 확대 레벨
           };
+        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
         this.setState({
           location: this.props.location,
+          map,
         });
-        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
         // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
         var zoomControl = new kakao.maps.ZoomControl();
         map.addControl(zoomControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
@@ -101,6 +103,7 @@ class Map extends Component {
         let markerClickIndex = (i) => {
           this.props.markerClick(i);
         };
+
         for (let i = 0; i < positions.length; i++) {
           var markerImage = new kakao.maps.MarkerImage(
             positions[i]["unSelectedImg"],
@@ -140,10 +143,92 @@ class Map extends Component {
     };
   }
   componentDidUpdate(prevProps) {
+    console.log("맵컴디업");
     const { kakao } = window;
+    if (prevProps.location !== this.props.location) {
+      for (let k in prevProps.location) {
+        this.state.marker[k].setMap(null);
+      }
+      console.log(this.state.marker);
+      let validationIndex = () => {
+        //알파벳 인덱스 함수
+        let imgIndexArr = [];
+        let alphabetArr = [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J",
+          "K",
+          "L",
+          "M",
+          "N",
+          "O",
+          "P",
+          "Q",
+          "R",
+          "S",
+          "T",
+        ];
+        for (let i in this.state.location) {
+          if (this.state.location[i]["isTrostPartnerCenter"] === true) {
+            imgIndexArr.push("trost");
+          }
+        }
+        let alphabetRemovedArr = alphabetArr.splice(
+          imgIndexArr.length,
+          alphabetArr.length - 1
+        );
+        let resultArr = imgIndexArr.concat(alphabetRemovedArr);
+        return resultArr;
+      };
+      var positions = []; //마커 포지션 생성
+      for (let i in this.props.location) {
+        positions.push({
+          title: this.props.location[i]["title"],
+          latlng: new kakao.maps.LatLng(
+            this.props.location[i]["mapY"],
+            this.props.location[i]["mapX"]
+          ),
+          unSelectedImg: `https://d2qrvi4l1nprmf.cloudfront.net/images/service/mobile/offline/is_unselected_mark/${
+            validationIndex()[i]
+          }_unselected.png`,
+          SelectedImg: `https://d2qrvi4l1nprmf.cloudfront.net/images/service/mobile/offline/is_selected_mark/${
+            validationIndex()[i]
+          }_selected.png`,
+        });
+      }
+      var imageSize = new kakao.maps.Size(30, 30);
+
+      // 마커 이미지를 생성합니다
+
+      // 마커를 생성합니다
+      let marker = {};
+      let markerClickIndex = (i) => {
+        this.props.markerClick(i);
+      };
+
+      for (let i = 0; i < positions.length; i++) {
+        var markerImage = new kakao.maps.MarkerImage(
+          positions[i]["unSelectedImg"],
+          imageSize
+        );
+        marker[i] = new kakao.maps.Marker({
+          map: this.state.map, // 마커를 표시할 지도
+          position: positions[i].latlng, // 마커를 표시할 위치
+          title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+          image: markerImage, // 마커 이미지
+        });
+      }
+    }
+
     if (this.props.clickIndex) {
       if (prevProps.clickIndex !== this.props.clickIndex) {
-        console.log(this.props);
         this.setState(
           {
             clickIndex: this.props.clickIndex,
@@ -174,7 +259,7 @@ class Map extends Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log("맵렌더");
     return <div className="map" id="map"></div>;
   }
 }

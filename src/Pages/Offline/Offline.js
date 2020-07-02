@@ -15,6 +15,7 @@ export default class Offline extends Component {
   }
 
   componentDidMount() {
+    console.log("오프컴디마");
     fetch("http://localhost:3000/data/partnerList.json")
       .then((res) => res.json())
       .then((res) => {
@@ -33,7 +34,7 @@ export default class Offline extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps.match.params.id, this.props.match.params.id);
+    console.log("오프컴디업");
     if (prevProps.match.params.id !== this.props.match.params.id) {
       //   fetch(
       //     `http://10.58.7.28:8000/offline/?page=${+this.props.match.params.id}`
@@ -177,6 +178,7 @@ export default class Offline extends Component {
       let resultArr = imgIndexArr.concat(alphabetRemovedArr);
       return resultArr;
     };
+    console.log("오프렌더");
     return (
       <div className="offline-container">
         <aside className="offline-aside">
