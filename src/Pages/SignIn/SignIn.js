@@ -24,7 +24,7 @@ class SignIn extends React.Component {
   clickHandler = () => {
     //e.prevent.Default();
     //POST
-    fetch("http://10.58.0.88:8000/users/signin", {
+    fetch("http://10.58.0.88:8000/user/signin", {
       method: "POST",
       body: JSON.stringify({
         email: this.state.id,
