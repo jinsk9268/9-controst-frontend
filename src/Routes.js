@@ -5,9 +5,9 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+import Nav from "Component/Nav/Nav";
 import Main from "Pages/Main/Main";
 import Login from "Pages/Login/Login";
-import Nav from "Component/Nav/Nav";
 import Partner from "Pages/Partner/Partner";
 import PartnerProfile from "Pages/Partner/PartnerProfile";
 

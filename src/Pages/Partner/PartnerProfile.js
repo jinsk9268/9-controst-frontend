@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PartnerNav from "./PartnerNav";
-import PartnerProfileInfo from "./PartnerProfileInfo";
 import PartnerProfileCard from "./PartnerProfileCard";
+import PartnerProfileInfo from "./PartnerProfileInfo";
 import PartnerProfileReservation from "./PartnerProfileReservation";
 import PartnerProfileReview from "./PartnerProfileReview";
 import PartnerProfileAside from "./PartnerProfileAside";
