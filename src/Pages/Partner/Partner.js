@@ -9,6 +9,7 @@ export default class Partner extends Component {
     super();
     this.state = {
       partnerData: [],
+      ptEndPoint: "",
       inputPtName: "",
       genderPt: "",
       masterPt: true,
@@ -24,12 +25,11 @@ export default class Partner extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/data/data.json")
+    fetch("http://10.58.7.28:8000/partner")
       .then((res) => res.json())
       // 확인용
       //.then((res) => console.log(res));
       .then((res) =>
-        // 데이터 순서 랜덤
         this.setState({
           partnerData: res.information.sort(() => {
             return Math.random() - Math.random();
@@ -70,7 +70,14 @@ export default class Partner extends Component {
     // console.log("defaultCheckTrue>>>", this.state.defaultCheckTrue);
     // console.log("defaultCheckFalse>>>", this.state.defaultCheckFalse);
 
-    const { partnerData, inputPtName, genderPt, masterPt, subPt, nomalPt } = this.state;
+    const {
+      partnerData,
+      inputPtName,
+      genderPt,
+      masterPt,
+      subPt,
+      nomalPt,
+    } = this.state;
 
     // // 필터 이름 테스트용
     // let ptNameFilter = partnerData.filter((nameData) => {
