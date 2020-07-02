@@ -5,16 +5,9 @@ import "./Partner.scss";
 export default class PartnerNav extends Component {
   render() {
     return (
-      <nav className="partner-nav">
-        <ul>
-          <li>
-            <Link to="/">홈</Link>
-          </li>
-          <li>
-            <Link to="/partner">상담사 찾기</Link>
-          </li>
-        </ul>
-      </nav>
+      <li>
+        <Link to={this.props.pageLink}>{this.props.pageName}</Link>
+      </li>
     );
   }
 }
