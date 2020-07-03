@@ -32,7 +32,12 @@ class SignIn extends React.Component {
       }), //이 )소괄호는 아직 fetch에 소괄호니까 밑에 then 가능
     })
       .then((res) => res.json()) // 제이슨 바디로 온다...
-      .then((res) => console.log(res)); //그냥 콘솔에 뿌리고 끝 리턴 안함
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("access_token", res.token);
+          this.props.history.push("/");
+        }
+      });
   };
 
   render() {
@@ -107,13 +112,6 @@ class SignIn extends React.Component {
             비밀번호 찾기
           </Link>
         </div>
-        <button
-          id="popupLoginClose"
-          class="join-style-popup-close js-popup-btn-close"
-          type="button"
-        >
-          닫기
-        </button>
       </div>
     );
   }

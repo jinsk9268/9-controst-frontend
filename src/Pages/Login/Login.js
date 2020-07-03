@@ -8,9 +8,6 @@ export class Login extends React.Component {
       <div className="login-container">
         <div className="login-box">
           <div className="login-logo">
-            <button className="login-close-btn" type="button">
-              닫기
-            </button>
             <form className="login-form">
               <div className="login-btn-wrap">
                 <button type="button" className="login-btn-kakao">
