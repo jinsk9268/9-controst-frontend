@@ -61,11 +61,13 @@ export class Signup extends React.Component {
         password: this.state.pw,
         nickname: this.state.nick,
       }),
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res));
+    }).then((res) => {
+      if (res.token) {
+        localStorage.setItem("access_token", res.token);
+        this.props.history.push("/signin");
+      }
+    });
   };
-
   idCheck = (e) => {
     e.preventDefault();
     fetch("http://10.58.0.88:8000/user/signup", {
