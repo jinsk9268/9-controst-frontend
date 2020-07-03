@@ -8,9 +8,6 @@ export default class Login extends Component {
       <div className="login-container">
         <div className="login-box">
           <div className="login-logo">
-            <button className="login-close-btn" type="button">
-              닫기
-            </button>
             <form className="login-form">
               <div className="login-btn-wrap">
                 <button type="button" className="login-btn-kakao">
@@ -26,7 +23,7 @@ export default class Login extends Component {
                   애플 로그인
                 </button>
                 <div className="login-email">
-                  <Link to="signin" className="login-email-a">
+                  <Link to="/signin" className="login-email-a">
                     이메일로 로그인
                   </Link>
                 </div>
