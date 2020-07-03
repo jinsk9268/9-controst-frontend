@@ -1,5 +1,6 @@
 import React from "react";
 import "./SignIn.scss";
+
 import { Link } from "react-router-dom";
 
 class SignIn extends React.Component {
@@ -34,10 +35,12 @@ class SignIn extends React.Component {
       .then((res) => res.json()) // 제이슨 바디로 온다...
       .then((res) => {
         if (res.token) {
-          localStorage.setItem("access_token", res.token);
+          //토큰이름은 종헌님이랑 같이 상의
+          localStorage.setItem("access_token", res.token); //access_token이름은 내가 정하는거 res.token은 그 토큰 종헌님한테 오는거 긴 토큰 이름임..
           this.props.history.push("/");
         }
-      });
+      })
+      .then((res) => console.log(res)); //그냥 콘솔에 뿌리고 끝 리턴 안함
   };
 
   render() {
@@ -46,7 +49,7 @@ class SignIn extends React.Component {
         <h2 className="signIn-head">이메일 로그인</h2>
         <div className="signIn-input-box">
           <label for="user-email-login">
-            <em className="user-head">아이디</em>
+            <em className="user-head">이메일</em>
             <input
               type="text"
               onChange={this.idChangeEvent}
@@ -89,7 +92,9 @@ class SignIn extends React.Component {
           id="btnLoginEmail"
           style={{
             backgroundColor:
-              this.state.id && this.state.pw.length > 5 ? "#f57c00" : "#f59000",
+              this.state.id.includes("@") && this.state.pw.length > 5
+                ? "#f57c00"
+                : "#ffcc80",
           }}
         >
           로그인
@@ -100,6 +105,7 @@ class SignIn extends React.Component {
             className="login-link-join-1"
             id="goJoinMain2"
             type="button"
+            style={{ textDecoration: "none" }}
           >
             회원가입
           </Link>
@@ -108,12 +114,21 @@ class SignIn extends React.Component {
             className="login-link-join-2"
             id="gofindPw"
             type="button"
+            style={{ textDecoration: "none" }}
           >
             비밀번호 찾기
           </Link>
         </div>
+        <button
+          id="popupLoginClose"
+          class="join-style-popup-close js-popup-btn-close"
+          type="button"
+        >
+          닫기
+        </button>
       </div>
     );
   }
 }
 export default SignIn;
+

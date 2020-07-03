@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import "Pages/Login/Login.scss";
 import { Link } from "react-router-dom";
 
-export class Login extends React.Component {
+export default class Login extends Component {
   render() {
     return (
       <div className="login-container">
