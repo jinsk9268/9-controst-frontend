@@ -56,7 +56,7 @@ export default class PartnerAside extends Component {
       handleClickGender,
       handleClickPosition,
       handleClickReset,
-      defaultCheck,
+      checkStatus,
     } = this.props;
 
     return (

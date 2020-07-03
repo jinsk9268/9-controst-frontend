@@ -4,6 +4,11 @@ import PartnerAside from "./PartnerAside";
 import PartnerList from "./PartnerList";
 import "./Partner.scss";
 
+const DEFAULT_CHECKED = {
+  check1: true,
+  check2: false,
+};
+
 // pagenation
 const LIMIT = 11;
 
@@ -21,7 +26,7 @@ export default class Partner extends Component {
       // 별점 순서별 정렬 확인용 / 구현 가능시 작성 (테스트용)
       starPointPt: "",
       // 리셋 확인용 / 구현 가능시 작성 (테스트용)
-      defaultCheck: false,
+      checkStatus: DEFAULT_CHECKED,
     };
   }
 
@@ -64,7 +69,7 @@ export default class Partner extends Component {
       masterPt: true,
       subPt: true,
       nomalPt: true,
-      defaultCheck: !this.state.defaultcheck,
+      checkStatus: DEFAULT_CHECKED,
     });
   };
 
@@ -86,6 +91,7 @@ export default class Partner extends Component {
       masterPt,
       subPt,
       nomalPt,
+      checkStatus,
     } = this.state;
 
     // // 필터 이름 테스트용
@@ -137,7 +143,7 @@ export default class Partner extends Component {
             handleClickPosition={this.handleClickPosition}
             handleClickReset={this.handleClickReset}
             //default 체크 확인용
-            defaultCheck={this.state.defaultCheck}
+            checkStatus={checkStatus}
           />
 
           {/* 파트너 list */}
