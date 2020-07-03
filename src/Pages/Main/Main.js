@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "Pages/Main/Main.scss";
 import Sectionone from "./SectionOne/Sectionone";
 import Sectiontwo from "./SectionTwo/Sectiontwo";
 import Sectionthree from "./Sectionthree";
@@ -9,6 +8,8 @@ import Sectionsix from "./SectionSix/Sectionsix";
 import Sectionseven from "./Sectionseven";
 import Sectioneight from "./Sectioneight";
 import TopBtn from "Component/TopBtn";
+import Footer from "Component/Footer/Footer";
+import "Pages/Main/Main.scss";
 
 export default class Main extends Component {
   constructor() {
@@ -111,9 +112,18 @@ export default class Main extends Component {
     return (
       <div className="container">
         <Sectionone />
-        <Sectiontwo stateDay={this.state.day} MouseOver={this.mouseOver} MouseOut={this.mouseOut} />
+        <Sectiontwo
+          stateDay={this.state.day}
+          MouseOver={this.mouseOver}
+          MouseOut={this.mouseOut}
+        />
         <Sectionthree />
-        <Sectionfour service={this.state.service} tabHandler={this.tabHandler} theraphyArr={this.state.theraphyArr} countChange={this.countChange} />
+        <Sectionfour
+          service={this.state.service}
+          tabHandler={this.tabHandler}
+          theraphyArr={this.state.theraphyArr}
+          countChange={this.countChange}
+        />
         <Sectionfive
           reviewData={this.state.reviewData}
           slidePage={this.state.slidePage}
@@ -124,6 +134,7 @@ export default class Main extends Component {
         <Sectionsix />
         <Sectionseven />
         <Sectioneight />
+        <Footer />
         <TopBtn />
       </div>
     );

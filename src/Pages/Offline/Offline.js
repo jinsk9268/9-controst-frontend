@@ -24,8 +24,8 @@ export default class Offline extends Component {
           partnerList: res["information"],
         });
       });
-    // fetch("http://10.58.7.28:8000/offline")
-    fetch("http://localhost:3000/data/location1.json")
+    fetch("http://10.58.7.28:8000/offline")
+      // fetch("http://localhost:3000/data/location1.json")
       .then((res) => res.json())
       .then((res) => {
         this.setState({
@@ -37,12 +37,12 @@ export default class Offline extends Component {
   componentDidUpdate(prevProps) {
     console.log("오프컴디업");
     if (prevProps.match.params.id !== this.props.match.params.id) {
-      //   fetch(
-      //     `http://10.58.7.28:8000/offline/?page=${+this.props.match.params.id}`
-      //   );
       fetch(
-        `http://localhost:3000/data/location${+this.props.match.params.id}.json`
+        `http://10.58.7.28:8000/offline?page=${+this.props.match.params.id}`
       )
+        //   fetch(
+        //     `http://localhost:3000/data/location${+this.props.match.params.id}.json`
+        //   )
         .then((res) => res.json())
         .then((res) => {
           console.log(res);
@@ -175,14 +175,19 @@ export default class Offline extends Component {
           imgIndexArr.push("trost");
         }
       }
-      let alphabetRemovedArr = alphabetArr.splice(
-        imgIndexArr.length,
-        alphabetArr.length - 1
-      );
-      let resultArr = imgIndexArr.concat(alphabetRemovedArr);
-      return resultArr;
+      console.log(imgIndexArr);
+      if (imgIndexArr.length > 0) {
+        let alphabetRemovedArr = alphabetArr.splice(
+          imgIndexArr.length,
+          alphabetArr.length - 1
+        );
+
+        let resultArr = imgIndexArr.concat(alphabetRemovedArr);
+        return resultArr;
+      } else {
+        return alphabetArr;
+      }
     };
-    console.log("오프렌더");
 
     let priceLocaleString = (randomNumber) => {
       return +this.state.partnerList[randomNumber]["prices"][0];
@@ -323,6 +328,7 @@ export default class Offline extends Component {
                           .scroll(0, PartnerShowRandomNum + i * 119);
                       }}
                     >
+                      {console.log(validationIndex())}
                       <div
                         className="center-item-img"
                         style={{
@@ -339,7 +345,6 @@ export default class Offline extends Component {
                           {this.state.locationList[i]["type"]}
                         </div>
                         <div className="center-item-distance">
-                          671m<span>|</span>
                           {this.state.locationList[i]["roadAddress"]}
                         </div>
                         <div className="center-item-number">
