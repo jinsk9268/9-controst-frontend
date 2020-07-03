@@ -3,7 +3,7 @@ import "./Signup.scss";
 
 import { Link } from "react-router-dom";
 
-export class Signup extends React.Component {
+export default class Signup extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -59,17 +59,20 @@ export class Signup extends React.Component {
       body: JSON.stringify({
         email: this.state.id,
         password: this.state.pw,
-        nickname: this.state.nick,
-      }),
-    }).then((res) => {
-      if (res.token) {
-        localStorage.setItem("access_token", res.token);
-        this.props.history.push("/signin
-    });
+        nickname: this.state.pwre,
+      }), //이 )소괄호는 아직 fetch에 소괄호니까 밑에 then 가능
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.message === "SUCCESS") {
+          this.props.history.push("/signin");
+        }
+      }); //그냥 콘솔에 뿌리고 끝 리턴 안함
   };
+
   idCheck = (e) => {
     e.preventDefault();
-    fetch("http://10.58.0.88:8000/user/signup", {
+    fetch("http://10.58.0.88:8000/user/emailcheck", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -92,7 +95,7 @@ export class Signup extends React.Component {
 
   nickCheck = (e) => {
     e.preventDefault();
-    fetch("http://10.58.0.88:8000/user/signup", {
+    fetch("http://10.58.0.88:8000/user/nickcheck", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -185,7 +188,6 @@ export class Signup extends React.Component {
   //콘솔에서 200인지 ,400인지 확인 가능
 
   render() {
-    // console.log(this.state.msg);
     return (
       <div className="signUp-email-content-big-box">
         <div className="signUp-email-content">
@@ -442,5 +444,3 @@ export class Signup extends React.Component {
     );
   }
 }
-
-export default Signup;

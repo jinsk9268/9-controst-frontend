@@ -247,6 +247,7 @@ class Map extends Component {
       this.setState({
         marker,
         positions,
+        PartnerShowRandomNum: this.props.PartnerShowRandomNum,
       });
     }
 

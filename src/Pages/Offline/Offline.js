@@ -11,21 +11,21 @@ export default class Offline extends Component {
       locationList: "",
       showDetail: "",
       detailIndex: "",
-      paginationIndex: 0,
+      paginationIndex: 1,
     };
   }
 
   componentDidMount() {
     console.log("오프컴디마");
-    fetch("http://localhost:3000/data/partnerList.json")
+    fetch("http://10.58.7.28:8000/partner")
       .then((res) => res.json())
       .then((res) => {
         this.setState({
           partnerList: res["information"],
         });
       });
-    // fetch("http://10.58.7.28:8000/offline")
-    fetch("http://localhost:3000/data/location1.json")
+    fetch("http://10.58.7.28:8000/offline")
+      // fetch("http://localhost:3000/data/location1.json")
       .then((res) => res.json())
       .then((res) => {
         this.setState({
@@ -37,12 +37,12 @@ export default class Offline extends Component {
   componentDidUpdate(prevProps) {
     console.log("오프컴디업");
     if (prevProps.match.params.id !== this.props.match.params.id) {
-      //   fetch(
-      //     `http://10.58.7.28:8000/offline/?page=${+this.props.match.params.id}`
-      //   )
       fetch(
-        `http://localhost:3000/data/location${+this.props.match.params.id}.json`
+        `http://10.58.7.28:8000/offline?page=${+this.props.match.params.id}`
       )
+        //   fetch(
+        //     `http://localhost:3000/data/location${+this.props.match.params.id}.json`
+        //   )
         .then((res) => res.json())
         .then((res) => {
           console.log(res);
@@ -175,19 +175,28 @@ export default class Offline extends Component {
           imgIndexArr.push("trost");
         }
       }
-      let alphabetRemovedArr = alphabetArr.splice(
-        imgIndexArr.length,
-        alphabetArr.length - 1
-      );
-      let resultArr = imgIndexArr.concat(alphabetRemovedArr);
-      return resultArr;
+      console.log(imgIndexArr);
+      if (imgIndexArr.length > 0) {
+        let alphabetRemovedArr = alphabetArr.splice(
+          imgIndexArr.length,
+          alphabetArr.length - 1
+        );
+
+        let resultArr = imgIndexArr.concat(alphabetRemovedArr);
+        return resultArr;
+      } else {
+        return alphabetArr;
+      }
     };
-    console.log("오프렌더");
+
+    let priceLocaleString = (randomNumber) => {
+      return +this.state.partnerList[randomNumber]["prices"][0];
+    };
     return (
       <div className="offline-container">
         <aside className="offline-aside">
           <div className="aside-title">상담센터 리스트 100</div>
-          <div className="center-list-box">
+          <div className="center-list-box" id="scrollTop">
             <div className="center-recommend-list">
               {this.state.partnerList &&
                 Array(PartnerShowRandomNum)
@@ -232,7 +241,7 @@ export default class Offline extends Component {
                                     1,
                                     this.state.partnerList[randomNumber][
                                       "stars"
-                                    ]["review__score__avg"]
+                                    ]
                                   )}
                                 ></li>
                                 <li
@@ -240,7 +249,7 @@ export default class Offline extends Component {
                                     2,
                                     this.state.partnerList[randomNumber][
                                       "stars"
-                                    ]["review__score__avg"]
+                                    ]
                                   )}
                                 ></li>
                                 <li
@@ -248,7 +257,7 @@ export default class Offline extends Component {
                                     3,
                                     this.state.partnerList[randomNumber][
                                       "stars"
-                                    ]["review__score__avg"]
+                                    ]
                                   )}
                                 ></li>
                                 <li
@@ -256,7 +265,7 @@ export default class Offline extends Component {
                                     4,
                                     this.state.partnerList[randomNumber][
                                       "stars"
-                                    ]["review__score__avg"]
+                                    ]
                                   )}
                                 ></li>
                                 <li
@@ -264,11 +273,17 @@ export default class Offline extends Component {
                                     5,
                                     this.state.partnerList[randomNumber][
                                       "stars"
-                                    ]["review__score__avg"]
+                                    ]
                                   )}
                                 ></li>
                               </ul>
-                              <span className="review-num">{`(${this.state.partnerList[randomNumber]["review_count"]})`}</span>
+                              <span className="review-num">
+                                {
+                                  this.state.partnerList[randomNumber][
+                                    "review_count"
+                                  ]
+                                }
+                              </span>
                             </div>
                           </div>
                           <div className="center-recommend-intro">
@@ -280,10 +295,19 @@ export default class Offline extends Component {
                           </div>
                           <div className="center-recommend-price">
                             <div className="center-recommend-normal-price">
-                              50,000원 ~
+                              {`${
+                                this.state.partnerList[randomNumber] &&
+                                priceLocaleString(randomNumber).toLocaleString()
+                              } ~`}
                             </div>
                             <div className="center-recommend-reduced-price">
-                              45,000원 ~
+                              {`${
+                                this.state.partnerList[randomNumber] &&
+                                (
+                                  (priceLocaleString(randomNumber) * 9) /
+                                  10
+                                ).toLocaleString()
+                              } ~`}
                             </div>
                           </div>
                         </div>
@@ -297,8 +321,14 @@ export default class Offline extends Component {
                   return (
                     <li
                       className="center-item"
-                      onClick={() => this.clickHandler(i)}
+                      onClick={() => {
+                        this.clickHandler(i);
+                        document
+                          .getElementById("scrollTop")
+                          .scroll(0, PartnerShowRandomNum + i * 119);
+                      }}
                     >
+                      {console.log(validationIndex())}
                       <div
                         className="center-item-img"
                         style={{
@@ -315,7 +345,6 @@ export default class Offline extends Component {
                           {this.state.locationList[i]["type"]}
                         </div>
                         <div className="center-item-distance">
-                          671m<span>|</span>
                           {this.state.locationList[i]["roadAddress"]}
                         </div>
                         <div className="center-item-number">
@@ -338,12 +367,13 @@ export default class Offline extends Component {
                     this.props.history.push(
                       `/offline/${this.state.paginationIndex - 1}`
                     );
+                    document.getElementById("scrollTop").scroll(0, 0);
                   }}
                 ></li>
                 <li
                   onClick={() => {
                     this.setState({
-                      paginationIndex: 0,
+                      paginationIndex: 1,
                     });
                     this.props.history.push("/offline/1");
                   }}
@@ -351,7 +381,7 @@ export default class Offline extends Component {
                 >
                   <span
                     style={
-                      this.state.paginationIndex === 0
+                      this.state.paginationIndex === 1
                         ? { color: "#f57c00" }
                         : { color: "#333333" }
                     }
@@ -362,15 +392,16 @@ export default class Offline extends Component {
                 <li
                   onClick={() => {
                     this.setState({
-                      paginationIndex: 1,
+                      paginationIndex: 2,
                     });
                     this.props.history.push("/offline/2");
+                    document.getElementById("scrollTop").scroll(0, 0);
                   }}
                   className="pagination btn-2"
                 >
                   <span
                     style={
-                      this.state.paginationIndex === 1
+                      this.state.paginationIndex === 2
                         ? { color: "#f57c00" }
                         : { color: "#333333" }
                     }
@@ -381,15 +412,16 @@ export default class Offline extends Component {
                 <li
                   onClick={() => {
                     this.setState({
-                      paginationIndex: 2,
+                      paginationIndex: 3,
                     });
                     this.props.history.push("/offline/3");
+                    document.getElementById("scrollTop").scroll(0, 0);
                   }}
                   className="pagination btn-3"
                 >
                   <span
                     style={
-                      this.state.paginationIndex === 2
+                      this.state.paginationIndex === 3
                         ? { color: "#f57c00" }
                         : { color: "#333333" }
                     }
@@ -400,15 +432,16 @@ export default class Offline extends Component {
                 <li
                   onClick={() => {
                     this.setState({
-                      paginationIndex: 3,
+                      paginationIndex: 4,
                     });
                     this.props.history.push("/offline/4");
+                    document.getElementById("scrollTop").scroll(0, 0);
                   }}
                   className="pagination btn-4"
                 >
                   <span
                     style={
-                      this.state.paginationIndex === 3
+                      this.state.paginationIndex === 4
                         ? { color: "#f57c00" }
                         : { color: "#333333" }
                     }
@@ -419,13 +452,22 @@ export default class Offline extends Component {
                 <li
                   onClick={() => {
                     this.setState({
-                      paginationIndex: 4,
+                      paginationIndex: 5,
                     });
                     this.props.history.push("/offline/5");
+                    document.getElementById("scrollTop").scroll(0, 0);
                   }}
                   className="pagination btn-5"
                 >
-                  <span>5</span>
+                  <span
+                    style={
+                      this.state.paginationIndex === 5
+                        ? { color: "#f57c00" }
+                        : { color: "#333333" }
+                    }
+                  >
+                    5
+                  </span>
                 </li>
                 <li
                   onClick={() => {
@@ -436,6 +478,7 @@ export default class Offline extends Component {
                     this.props.history.push(
                       `/offline/${this.state.paginationIndex + 1}`
                     );
+                    document.getElementById("scrollTop").scroll(0, 0);
                   }}
                   className="pagination-right-btn"
                 ></li>
@@ -604,6 +647,7 @@ export default class Offline extends Component {
             location={this.state.locationList}
             clickIndex={this.state.detailIndex}
             markerClick={this.clickHandler}
+            PartnerShowRandomNum={PartnerShowRandomNum}
           />
         )}
       </div>
