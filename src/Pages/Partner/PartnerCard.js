@@ -19,16 +19,6 @@ export default class PartnerCard extends Component {
     this.setState({ isWishBtnActive: !this.state.isWishBtnActive });
   };
 
-  ptPositionClassName = () => {
-    if (this.props.level === "마스터 상담사") {
-      return "partner-info-position master";
-    } else if (this.props.level === "전문 상담사") {
-      return "partner-info-position sub";
-    } else if (this.props.level === "일반 상담사") {
-      return "partner-info-position nomal";
-    }
-  };
-
   ptPointClassName = (num) => {
     let starNum = this.props.point - num;
     if (starNum >= 0) {
@@ -45,20 +35,47 @@ export default class PartnerCard extends Component {
   render() {
     return (
       <article className="partner-list-box">
-        <button className={this.state.isWishBtnActive ? "btn-partner-wish add-wish" : "btn-partner-wish"} onClick={this.handlePtWish}>
+        <button
+          className={
+            this.state.isWishBtnActive
+              ? "btn-partner-wish add-wish"
+              : "btn-partner-wish"
+          }
+          onClick={this.handlePtWish}
+        >
           상담사 찜하기
         </button>
         {/* URL parameter 구현 필요 */}
-        <Link to="/partner/profile" style={{ textDecoration: "none", color: "var(--black)" }}>
+        <Link
+          to={`/partner/profile/${this.props.id}`}
+          style={{ textDecoration: "none", color: "var(--black)" }}
+        >
           <div className="partner-info">
             <div className="partner-info-wrap-img">
-              <img className="partner-info-img" alt="상담사 사진" src={this.props.partnerImg} />
+              <img
+                className="partner-info-img"
+                alt="상담사 사진"
+                src={this.props.partnerImg}
+              />
             </div>
             <div className="partner-info-wrap-text">
               <div className="partner-info-text">
                 <span className="partner-info-name">{this.props.name}</span>
-                <span className={this.ptPositionClassName()}>{this.props.level}</span>
-                <span className="partner-info-new" style={this.props.point === null ? {} : { display: "none" }}>
+                <span
+                  className={`partner-info-position ${
+                    this.props.level === "마스터 상담사"
+                      ? "master"
+                      : this.props.level === "전문 상담사"
+                      ? "sub"
+                      : "nomal"
+                  }`}
+                >
+                  {this.props.level}
+                </span>
+                <span
+                  className="partner-info-new"
+                  style={this.props.point === null ? {} : { display: "none" }}
+                >
                   NEW
                 </span>
               </div>
@@ -73,7 +90,9 @@ export default class PartnerCard extends Component {
                     <li className={this.ptPointClassName(5)}></li>
                   </ol>
                 </div>
-                <div className="partner-info-count">({this.props.reviewNum})</div>
+                <div className="partner-info-count">
+                  ({this.props.reviewNum})
+                </div>
               </div>
             </div>
           </div>
@@ -85,7 +104,9 @@ export default class PartnerCard extends Component {
               alt="문자상담 사진"
               src="https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/ic_item_tt.png"
             />
-            <div className="partner-price-won">{this.props.textPrice.toLocaleString()}원</div>
+            <div className="partner-price-won">
+              {this.props.textPrice.toLocaleString()}원
+            </div>
           </div>
           <div className="partner-price-call">
             <img
@@ -93,7 +114,9 @@ export default class PartnerCard extends Component {
               alt="전화상담 사진"
               src="https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/ic_item_vt.png"
             />
-            <div className="partner-price-won">{this.props.phonePrice.toLocaleString()}원</div>
+            <div className="partner-price-won">
+              {this.props.phonePrice.toLocaleString()}원
+            </div>
           </div>
           <div className="partner-price-meet">
             <img
@@ -101,7 +124,9 @@ export default class PartnerCard extends Component {
               alt="대면상담 사진"
               src="https://d2qrvi4l1nprmf.cloudfront.net/images/service/partner/ic_item_ot.png"
             />
-            <div className="partner-price-won">{this.props.meetPrice.toLocaleString()}원</div>
+            <div className="partner-price-won">
+              {this.props.meetPrice.toLocaleString()}원
+            </div>
           </div>
         </div>
       </article>
