@@ -42,6 +42,7 @@ export default class PartnerAside extends Component {
       changeCheckbox: true,
       changeRadio: true,
       test: "",
+      testCheck: true,
     };
   }
 
@@ -55,7 +56,7 @@ export default class PartnerAside extends Component {
       handleClickGender,
       handleClickPosition,
       handleClickReset,
-      resetFilter,
+      checkStatus,
     } = this.props;
 
     return (

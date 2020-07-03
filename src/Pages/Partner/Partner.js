@@ -4,6 +4,14 @@ import PartnerAside from "./PartnerAside";
 import PartnerList from "./PartnerList";
 import "./Partner.scss";
 
+const DEFAULT_CHECKED = {
+  check1: true,
+  check2: false,
+};
+
+// pagenation
+const LIMIT = 11;
+
 export default class Partner extends Component {
   constructor() {
     super();
@@ -18,9 +26,7 @@ export default class Partner extends Component {
       // 별점 순서별 정렬 확인용 / 구현 가능시 작성 (테스트용)
       starPointPt: "",
       // 리셋 확인용 / 구현 가능시 작성 (테스트용)
-      resetFilter: false,
-      defaultCheckTrue: true,
-      defaultCheckFalse: false,
+      checkStatus: DEFAULT_CHECKED,
     };
   }
 
@@ -40,6 +46,9 @@ export default class Partner extends Component {
     //http://10.58.7.28:8000/partner
   }
 
+  // componentDidUpdate(prevProps) {
+  // }
+
   handleChangeInput = (e) => {
     this.setState({ inputPtName: e.target.value });
   };
@@ -54,9 +63,14 @@ export default class Partner extends Component {
 
   // 리셋 확인용
   handleClickReset = () => {
-    this.setState({ resetFilter: !this.state.resetFilter });
-    // this.setState({ defaultCheckTrue: !this.state.defaultCheckTrue });
-    // this.setState({ defaultCheckFalse: !this.defaultCheckFalse });
+    this.setState({
+      inputPtName: "",
+      genderPt: "",
+      masterPt: true,
+      subPt: true,
+      nomalPt: true,
+      checkStatus: DEFAULT_CHECKED,
+    });
   };
 
   render() {
@@ -77,6 +91,7 @@ export default class Partner extends Component {
       masterPt,
       subPt,
       nomalPt,
+      checkStatus,
     } = this.state;
 
     // // 필터 이름 테스트용
@@ -127,9 +142,8 @@ export default class Partner extends Component {
             handleClickGender={this.handleClickGender}
             handleClickPosition={this.handleClickPosition}
             handleClickReset={this.handleClickReset}
-            resetFilter={this.state.resetFilter}
-            defaultCheckTrue={this.state.defaultCheckTrue}
-            defaultCheckFalse={this.state.defaultCheckFalse}
+            //default 체크 확인용
+            checkStatus={checkStatus}
           />
 
           {/* 파트너 list */}
