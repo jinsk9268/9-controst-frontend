@@ -224,7 +224,30 @@ class Map extends Component {
           title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
           image: markerImage, // 마커 이미지
         });
+        kakao.maps.event.addListener(marker[i], "click", function () {
+          markerClickIndex(i);
+          for (let j in positions) {
+            //이미지 unSelect로 초기화, z-index 초기화
+            var disableImage = new kakao.maps.MarkerImage(
+              positions[j]["unSelectedImg"],
+              new kakao.maps.Size(30, 30)
+            );
+            marker[j].setImage(disableImage);
+            marker[j].setZIndex(2);
+          }
+          var markerImage = new kakao.maps.MarkerImage(
+            positions[i]["SelectedImg"],
+            new kakao.maps.Size(40, 60),
+            new kakao.maps.Point(20, 60)
+          );
+          marker[i].setImage(markerImage);
+          marker[i].setZIndex(3); //z-index 설정해준다.
+        });
       }
+      this.setState({
+        marker,
+        positions,
+      });
     }
 
     if (this.props.clickIndex) {

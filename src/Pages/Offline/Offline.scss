@@ -1,3 +1,14 @@
+@font-face {
+  font-family: "NanumBarunGothic";
+  src: url("/assets/fonts/NanumBarunGothicBoldSubset.woff2") format("woff2");
+
+  /*font-family: 'NotoSansKR';*/
+  /*src: url('/assets/fonts/NotoSansKR-Medium.woff') format('woff2');*/
+  /*src: url('/assets/fonts/NotoSansKR-Bold.woff') format('woff2');*/
+  font-weight: bold;
+
+  font-display: swap;
+}
 .offline-container {
   position: relative;
   top: 72px;
@@ -58,6 +69,7 @@
           .center-recommend-text {
             margin-left: 114px;
             position: relative;
+            font-family: "NanumBarunGothic", "sans-serif";
             .center-recommend-name {
               font-size: 16px;
               line-height: 20px;
@@ -219,16 +231,15 @@
             height: 28px;
             line-height: 28px;
             background-color: #fff;
-            &.btn-1 a {
-              color: var(--themeColor);
-            }
-            a {
+
+            span {
               width: 100%;
               height: 100%;
               font-size: 12px;
               text-align: center;
               text-decoration: none;
               color: var(--black);
+              cursor: pointer;
               &:visited {
                 color: none;
               }

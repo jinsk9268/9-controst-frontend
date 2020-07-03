@@ -11,6 +11,7 @@ export default class Offline extends Component {
       locationList: "",
       showDetail: "",
       detailIndex: "",
+      paginationIndex: 0,
     };
   }
 
@@ -24,7 +25,7 @@ export default class Offline extends Component {
         });
       });
     // fetch("http://10.58.7.28:8000/offline")
-    fetch("http://localhost:3000/data/location.json")
+    fetch("http://localhost:3000/data/location1.json")
       .then((res) => res.json())
       .then((res) => {
         this.setState({
@@ -39,12 +40,15 @@ export default class Offline extends Component {
       //   fetch(
       //     `http://10.58.7.28:8000/offline/?page=${+this.props.match.params.id}`
       //   )
-      fetch("http://localhost:3000/data/location2.json")
+      fetch(
+        `http://localhost:3000/data/location${+this.props.match.params.id}.json`
+      )
         .then((res) => res.json())
         .then((res) => {
           console.log(res);
           this.setState({
             locationList: res["location"],
+            paginationIndex: +this.props.match.params.id,
           });
         });
     }
@@ -324,24 +328,115 @@ export default class Offline extends Component {
             </ul>
             <div className="center-pagination">
               <ul className="pagination-btn-list">
-                <li className="pagination-left-btn"></li>
-                <li className="pagination btn-1">
-                  <Link to="/">1</Link>
-                </li>
-                <li className="pagination btn-2">
-                  <Link to="/">2</Link>
-                </li>
-                <li className="pagination btn-3">
-                  <Link to="/">3</Link>
-                </li>
-                <li className="pagination btn-4">
-                  <Link to="/">4</Link>
-                </li>
-                <li className="pagination btn-5">
-                  <Link to="/">5</Link>
+                <li
+                  className="pagination-left-btn"
+                  onClick={() => {
+                    this.setState({
+                      paginationIndex: this.state.paginationIndex - 1,
+                    });
+
+                    this.props.history.push(
+                      `/offline/${this.state.paginationIndex - 1}`
+                    );
+                  }}
+                ></li>
+                <li
+                  onClick={() => {
+                    this.setState({
+                      paginationIndex: 0,
+                    });
+                    this.props.history.push("/offline/1");
+                  }}
+                  className="pagination btn-1"
+                >
+                  <span
+                    style={
+                      this.state.paginationIndex === 0
+                        ? { color: "#f57c00" }
+                        : { color: "#333333" }
+                    }
+                  >
+                    1
+                  </span>
                 </li>
                 <li
-                  onClick={() => this.props.history.push("/offline/2")}
+                  onClick={() => {
+                    this.setState({
+                      paginationIndex: 1,
+                    });
+                    this.props.history.push("/offline/2");
+                  }}
+                  className="pagination btn-2"
+                >
+                  <span
+                    style={
+                      this.state.paginationIndex === 1
+                        ? { color: "#f57c00" }
+                        : { color: "#333333" }
+                    }
+                  >
+                    2
+                  </span>
+                </li>
+                <li
+                  onClick={() => {
+                    this.setState({
+                      paginationIndex: 2,
+                    });
+                    this.props.history.push("/offline/3");
+                  }}
+                  className="pagination btn-3"
+                >
+                  <span
+                    style={
+                      this.state.paginationIndex === 2
+                        ? { color: "#f57c00" }
+                        : { color: "#333333" }
+                    }
+                  >
+                    3
+                  </span>
+                </li>
+                <li
+                  onClick={() => {
+                    this.setState({
+                      paginationIndex: 3,
+                    });
+                    this.props.history.push("/offline/4");
+                  }}
+                  className="pagination btn-4"
+                >
+                  <span
+                    style={
+                      this.state.paginationIndex === 3
+                        ? { color: "#f57c00" }
+                        : { color: "#333333" }
+                    }
+                  >
+                    4
+                  </span>
+                </li>
+                <li
+                  onClick={() => {
+                    this.setState({
+                      paginationIndex: 4,
+                    });
+                    this.props.history.push("/offline/5");
+                  }}
+                  className="pagination btn-5"
+                >
+                  <span>5</span>
+                </li>
+                <li
+                  onClick={() => {
+                    this.setState({
+                      paginationIndex: this.state.paginationIndex + 1,
+                    });
+
+                    this.props.history.push(
+                      `/offline/${this.state.paginationIndex + 1}`
+                    );
+                  }}
                   className="pagination-right-btn"
                 ></li>
               </ul>
