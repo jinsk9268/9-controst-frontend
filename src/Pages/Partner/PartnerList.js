@@ -251,7 +251,7 @@ export default class PartnerList extends Component {
                 name={data.name}
                 level={data.level}
                 headLine={data.introduction}
-                point={data.stars.review__score__avg}
+                point={data.stars}
                 reviewNum={data.review_count}
                 textPrice={Number(data.prices[0])}
                 phonePrice={Number(data.prices[3])}
@@ -274,8 +274,11 @@ export default class PartnerList extends Component {
         </div>
 
         {/* 페이지 네이션 준비 */}
-
-        <div className="partner-list-pages"></div>
+        <div className="partner-list-pages">
+          <ul>
+            <li></li>
+          </ul>
+        </div>
       </section>
     );
   }
