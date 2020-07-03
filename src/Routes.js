@@ -5,11 +5,12 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+import Nav from "Component/Nav/Nav";
 import Main from "Pages/Main/Main";
 import Login from "Pages/Login/Login";
-import Nav from "Component/Nav/Nav";
 import Partner from "Pages/Partner/Partner";
 import Offline from "Pages/Offline/Offline";
+import PartnerProfile from "Pages/Partner/PartnerProfile";
 
 class Routes extends React.Component {
   render() {
@@ -22,6 +23,7 @@ class Routes extends React.Component {
           <Route exact path="/partner" component={Partner} />
           <Route exact path="/offline" component={Offline} />
           <Route exact path="/offline/:id" component={Offline} />
+          <Route exact path="/partner/profile/:id" component={PartnerProfile} />
           <Redirect from="*" to="/" />
         </Switch>
       </Router>
