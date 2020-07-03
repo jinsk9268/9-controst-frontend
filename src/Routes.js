@@ -11,9 +11,7 @@ import Login from "Pages/Login/Login";
 import Signup from "Pages/SignUp/Signup";
 import SignIn from "Pages/SignIn/SignIn";
 import Partner from "Pages/Partner/Partner";
-import PartnerProfile from 'Pages/Partner/PartnerProfile';
-
-
+import PartnerProfile from "Pages/Partner/PartnerProfile";
 
 class Routes extends React.Component {
   render() {
@@ -26,8 +24,8 @@ class Routes extends React.Component {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/partner" component={Partner} />
-          <Route exact path='/partner/profile' component={PartnerProfile} />
-          <Redirect from='*' to='/' />
+          <Route exact path="/partner/profile" component={PartnerProfile} />
+          <Redirect from="*" to="/" />
         </Switch>
       </Router>
     );

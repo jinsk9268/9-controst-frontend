@@ -26,14 +26,14 @@ export class Login extends React.Component {
                   애플 로그인
                 </button>
                 <div className="login-email">
-                  <Link to="#" className="login-email-a">
+                  <Link to="/signin" className="login-email-a">
                     이메일로 로그인
                   </Link>
                 </div>
               </div>
               <div className="login-info">
                 트로스트 계정이 없으신가요?
-                <Link to="#" className="sign-link">
+                <Link to="signup" className="sign-link">
                   회원가입하기
                 </Link>
               </div>

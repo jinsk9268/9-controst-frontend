@@ -90,12 +90,22 @@ class SignIn extends React.Component {
           로그인
         </button>
         <div className="login-info-txt">
-          <button className="login-link-join-1" id="goJoinMain2" type="button">
+          <Link
+            to="/signup"
+            className="login-link-join-1"
+            id="goJoinMain2"
+            type="button"
+          >
             회원가입
-          </button>
-          <button className="login-link-join-2" id="gofindPw" type="button">
+          </Link>
+          <Link
+            to="#"
+            className="login-link-join-2"
+            id="gofindPw"
+            type="button"
+          >
             비밀번호 찾기
-          </button>
+          </Link>
         </div>
         <button
           id="popupLoginClose"
