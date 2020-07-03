@@ -64,8 +64,7 @@ export class Signup extends React.Component {
     }).then((res) => {
       if (res.token) {
         localStorage.setItem("access_token", res.token);
-        this.props.history.push("/signin");
-      }
+        this.props.history.push("/signin
     });
   };
   idCheck = (e) => {
