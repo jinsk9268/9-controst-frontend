@@ -13,7 +13,7 @@ class Map extends Component {
   }
 
   componentDidMount() {
-    console.log("맵컴디마");
+    alert("설정에서 위치정보 허용 후 사용할 수 있습니다");
     const script = document.createElement("script");
     script.async = true;
     script.src =

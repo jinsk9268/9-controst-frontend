@@ -25,7 +25,7 @@ export default class PartnerProfile extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://10.58.7.28:8000/partner/${this.props.match.params.id}`)
+    fetch(`http://3.34.141.93:8000/partner/${this.props.match.params.id}`)
       .then((res) => res.json())
       // 확인용
       // .then((res) => console.log(res));
