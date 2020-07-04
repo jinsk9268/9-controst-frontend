@@ -41,13 +41,13 @@
 
 ### **구현 기능:**
 
-#### **Main Page **:
+#### **Main Page**:
 
 - React의 Typing와 CountUp lib 사용하여 구현
 - 이벤트 발생시 계산된 속성명을 통해 함수 반복 최소화
 - mount시 setInterval 함수를 이용해 auto carousel구현과 map함수를 이용해 slide 생성 및 slick slider 구현
 
-#### **Signup/Signin**
+#### **Signup/Signin**:
 
 - email, nickname, password 각각의 validation 함수를 통해 조건 체크 구현
 - email, nickname은 Backend와 통신하여 실제 데이터와의 중복체크 구현
@@ -59,7 +59,7 @@
 
 - Hover시 dropdown하고 Click시 dropdown이 사라지고 각 페이지 이동 구현
 
-#### **Partner/Profile**
+#### **Partner/Profile**:
 
 - fetch 로 백엔드로부터 데이터 받아와 파트너 카드 구현 (이름, 직책, headline, 별점, 리뷰수)
 - 파트너 카드 컴포넌트 map 사용하여 리턴
