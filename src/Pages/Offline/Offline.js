@@ -17,14 +17,14 @@ export default class Offline extends Component {
 
   componentDidMount() {
     console.log("오프컴디마");
-    fetch("http://10.58.7.28:8000/partner")
+    fetch("http://3.34.141.93:8000/partner")
       .then((res) => res.json())
       .then((res) => {
         this.setState({
           partnerList: res["information"],
         });
       });
-    fetch("http://10.58.7.28:8000/offline")
+    fetch("http://3.34.141.93:8000/offline")
       // fetch("http://localhost:3000/data/location1.json")
       .then((res) => res.json())
       .then((res) => {
@@ -38,7 +38,7 @@ export default class Offline extends Component {
     console.log("오프컴디업");
     if (prevProps.match.params.id !== this.props.match.params.id) {
       fetch(
-        `http://10.58.7.28:8000/offline?page=${+this.props.match.params.id}`
+        `http://3.34.141.93:8000/offline?page=${+this.props.match.params.id}`
       )
         //   fetch(
         //     `http://localhost:3000/data/location${+this.props.match.params.id}.json`
