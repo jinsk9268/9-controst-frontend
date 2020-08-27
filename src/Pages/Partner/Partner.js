@@ -9,9 +9,6 @@ const DEFAULT_CHECKED = {
   check2: false,
 };
 
-// pagenation
-const LIMIT = 11;
-
 export default class Partner extends Component {
   constructor() {
     super();
@@ -46,9 +43,6 @@ export default class Partner extends Component {
     //http://10.58.7.28:8000/partner
   }
 
-  // componentDidUpdate(prevProps) {
-  // }
-
   handleChangeInput = (e) => {
     this.setState({ inputPtName: e.target.value });
   };
@@ -74,16 +68,6 @@ export default class Partner extends Component {
   };
 
   render() {
-    // 확인용
-    // console.log("inputPtName>>>", this.state.inputPtName);
-    // console.log("genderPt>>>", this.state.genderPt);
-    // console.log("masterPt>>>", this.state.masterPt);
-    // console.log("subPt>>>", this.state.subPt);
-    // console.log("nomalPt>>>", this.state.nomalPt);
-    // console.log("resetFilter>>>", this.state.resetFilter);
-    // console.log("defaultCheckTrue>>>", this.state.defaultCheckTrue);
-    // console.log("defaultCheckFalse>>>", this.state.defaultCheckFalse);
-
     const {
       partnerData,
       inputPtName,
@@ -93,21 +77,6 @@ export default class Partner extends Component {
       nomalPt,
       checkStatus,
     } = this.state;
-
-    // // 필터 이름 테스트용
-    // let ptNameFilter = partnerData.filter((nameData) => {
-    //   return nameData.name.includes(inputPtName);
-    // });
-
-    // // 필터 성별 테스트용
-    // let ptGenderFilter = partnerData.filter((genderData) => {
-    //   return genderData.gender.includes(genderPt);
-    // });
-
-    // // 이름+성별 합쳤을때 테스트용
-    // let ptNameGenderFilter = partnerData.filter((checkData) => {
-    //   return checkData.name.includes(inputPtName);
-    // });
 
     // 최종 필터 : 상담사 레벨, 상담사 성별, 상담사 이름
     let ptFilter = partnerData
