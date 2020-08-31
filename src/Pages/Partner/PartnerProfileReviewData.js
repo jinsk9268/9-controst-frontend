@@ -62,7 +62,6 @@ export default class PartnerProfileReviewData extends Component {
 
   render() {
     const { review_created, review_score, review_comment } = this.props;
-    // console.log(review_created);
     return (
       <li className="review-content-wrap">
         <div className="review-content-top">

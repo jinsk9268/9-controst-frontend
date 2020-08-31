@@ -30,10 +30,6 @@ export default class PartnerProfileCard extends Component {
   };
 
   render() {
-    // console.log(
-    //   this.props.ptProData.stars &&
-    //     this.props.ptProData.stars.review__score__avg
-    // );
     const { ptProData } = this.props;
 
     return (

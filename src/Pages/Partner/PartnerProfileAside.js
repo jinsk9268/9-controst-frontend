@@ -3,10 +3,6 @@ import "./PartnerProfile.scss";
 
 export default class PartnerProfileAside extends Component {
   render() {
-    // console.log(
-    //   "prices >>>",
-    //   this.props.ptProData.prices && this.props.ptProData.prices[0]
-    // );
     const { ptProData } = this.props;
     return (
       <aside className="partner-profile-aside">

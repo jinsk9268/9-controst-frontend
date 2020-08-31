@@ -21,7 +21,6 @@ export default class PartnerProfileReview extends Component {
   };
 
   render() {
-    // console.log(this.props.ptProReviewData.reviews);
     const { ptProInfoData, ptProReviewData } = this.props;
 
     return (

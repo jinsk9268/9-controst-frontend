@@ -28,7 +28,7 @@ export default class Partner extends Component {
   }
 
   componentDidMount() {
-    fetch("http://3.34.141.93:8000/partner")
+    fetch("http://localhost:3000/data/data.json")
       .then((res) => res.json())
       // 확인용
       //.then((res) => console.log(res));

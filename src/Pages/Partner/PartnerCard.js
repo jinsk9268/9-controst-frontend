@@ -10,11 +10,6 @@ export default class PartnerCard extends Component {
     };
   }
 
-  // 3명한테만 추천 표시 수정중
-  // ptRecomendAdd = () => {
-  //   return this.props.level === "마스터 상담사" ? "partner-list-box marter-recommend " : "partner-list-box";
-  // };
-
   handlePtWish = () => {
     this.setState({ isWishBtnActive: !this.state.isWishBtnActive });
   };
@@ -45,7 +40,6 @@ export default class PartnerCard extends Component {
         >
           상담사 찜하기
         </button>
-        {/* URL parameter 구현 필요 */}
         <Link
           to={`/partner/profile/${this.props.id}`}
           style={{ textDecoration: "none", color: "var(--black)" }}

@@ -6,14 +6,6 @@ import PartnerProfileReservation from "./PartnerProfileReservation";
 import PartnerProfileReview from "./PartnerProfileReview";
 import PartnerProfileAside from "./PartnerProfileAside";
 import "./PartnerProfile.scss";
-
-// props 로 데이터 전달을 위한 수정
-// const ptContentTab = {
-//   tabInfo: <PartnerProfileInfo />,
-//   tabReservation: <PartnerProfileReservation />,
-//   tabReview: <PartnerProfileReview />,
-// };
-
 export default class PartnerProfile extends Component {
   constructor() {
     super();
@@ -25,34 +17,19 @@ export default class PartnerProfile extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://3.34.141.93:8000/partner/${this.props.match.params.id}`)
+    fetch("http://localhost:3000/data/partnerProfileData.json")
       .then((res) => res.json())
-      // 확인용
-      // .then((res) => console.log(res));
       .then((res) => {
         this.setState({ partnerProfileData: res.information });
       });
     //http://localhost:3000/data/partnerProfileData.json
     //http://10.58.7.28:8000/partner/10
+    //`http://3.34.141.93:8000/partner/${this.props.match.params.id}`
   }
 
   clickShowTab = (tabName) => {
     this.setState({ showTab: tabName });
   };
-
-  // props 로 데이터 전달 위해 수정
-  // activeTabShow = (activeTab) => {
-  //   switch (activeTab) {
-  //     case "tabInfo":
-  //       return <PartnerProfileInfo />;
-  //     case "tabReservation":
-  //       return <PartnerProfileReservation />;
-  //     case "tabReview":
-  //       return <PartnerProfileReview />;
-  //     default:
-  //       break;
-  //   }
-  // };
 
   activeTabShow = (activeTab) => {
     switch (activeTab) {
@@ -90,42 +67,6 @@ export default class PartnerProfile extends Component {
   };
 
   render() {
-    // render 안 or 밖?
-    // const activeTabShow = (activeTab) => {
-    //   switch (activeTab) {
-    //     case "tabInfo":
-    //       return (
-    //         <PartnerProfileInfo
-    //           ptProInfoData={
-    //             this.state.partnerProfileData.length > 0 &&
-    //             this.state.partnerProfileData[0]
-    //           }
-    //           ptProConData={
-    //             this.state.partnerProfileData.length > 0 &&
-    //             this.state.partnerProfileData[1]
-    //           }
-    //         />
-    //       );
-    //     case "tabReservation":
-    //       return <PartnerProfileReservation />;
-    //     case "tabReview":
-    //       return (
-    //         <PartnerProfileReview
-    //           ptProInfoData={
-    //             this.state.partnerProfileData.length > 0 &&
-    //             this.state.partnerProfileData[0]
-    //           }
-    //           ptProConData={
-    //             this.state.partnerProfileData.length > 0 &&
-    //             this.state.partnerProfileData[1]
-    //           }
-    //         />
-    //       );
-    //     default:
-    //       break;
-    //   }
-    // };
-
     return (
       <div className="PartnerProfile">
         <nav className="partner-profile-nav">

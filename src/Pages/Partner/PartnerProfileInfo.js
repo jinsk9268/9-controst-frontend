@@ -8,7 +8,6 @@ export default class PartnerProfileInfo extends Component {
   render() {
     const { ptProInfoData, ptProConData } = this.props;
     const ptQualiArr = ptProConData && ptProConData.history_body.split("\n");
-    // console.log(ptQualiArr);
     return (
       <section className="profile-content-info">
         <article className="info-youtube"></article>
